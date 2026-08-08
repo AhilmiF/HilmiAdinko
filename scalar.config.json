@@ -1,0 +1,31 @@
+﻿{
+  "$schema": "https://cdn.scalar.com/schema/scalar-config-next.json",
+  "scalar": "2.0.0",
+  "info": {
+    "title": "HilmiAdinko"
+  },
+  "siteConfig": {},
+  "navigation": {
+    "routes": {
+      "/": {
+        "type": "group",
+        "title": "Documentation",
+        "items": [
+          { "type": "page", "title": "Install", "path": "docs/install.md" }
+        ]
+      },
+      "/api-reference": {
+        "type": "apiReference",
+        "title": "API Reference",
+        "configuration": {
+          "sources": [
+            {
+              "title": "HilmiAdinko API",
+              "url": "docs/openapi.json"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

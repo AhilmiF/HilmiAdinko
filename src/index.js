@@ -17,6 +17,8 @@ const kontakRoutes = require('./routes/kontak');
 const portfolioRoute = require('./routes/portfolioRoute');
 const contactRoute = require('./routes/contactRoute');
 const kategoriRoute = require('./routes/kategoriRoute');
+const testimoniRoute = require('./routes/testimoniRoute');
+
 
 const app = express();
 
@@ -40,6 +42,8 @@ app.use('/testimoni', testimoniRoutes);
 app.use('/kontak', kontakRoutes);
 app.use('/contact', contactRoute);
 app.use('/kategori', kategoriRoute);
+app.use('/testimoniRoute', testimoniRoute);
+
 
 // Routing upload file
 app.post('/upload', upload.single('pictures'), (req, res) => {
