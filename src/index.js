@@ -5,7 +5,7 @@ const express = require('express');
 const upload = require('./middleware/multer');
 const middlewareLogRequest = require('./middleware/logs');
 
-const usersRoutes = require('./routes/users');
+
 const homeRoutes = require('./routes/home');
 const aboutRoutes = require('./routes/about');
 const layananRoutes = require('./routes/layanan');
@@ -32,7 +32,7 @@ app.use('/assets', express.static('public/images'));
 app.use(express.json());
 
 // Routing
-app.use('/users', usersRoutes);
+
 app.use('/home', homeRoutes);
 app.use('/about', aboutRoutes);
 app.use('/layanan', layananRoutes);
