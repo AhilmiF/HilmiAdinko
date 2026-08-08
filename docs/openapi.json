@@ -39,6 +39,7 @@
           "Portfolio"
         ],
         "summary": "Get all portfolios",
+        "description": "Mengambil semua data portfolio beserta nama kategori layanan dari tabel portfolio yang di-join dengan kategori_layanan.",
         "operationId": "getAllPortfolio",
         "responses": {
           "200": {
@@ -73,6 +74,7 @@
           "Portfolio"
         ],
         "summary": "Create a new portfolio",
+        "description": "Menambahkan data portfolio baru ke database. Field kategori diisi dengan ID dari tabel kategori_layanan.",
         "operationId": "createNewPortfolio",
         "requestBody": {
           "required": true,
@@ -116,6 +118,7 @@
           "Portfolio"
         ],
         "summary": "Update a portfolio",
+        "description": "Memperbarui data portfolio berdasarkan ID. Semua field harus diisi ulang (full update).",
         "operationId": "updatePortfolio",
         "parameters": [
           {
@@ -168,6 +171,7 @@
           "Portfolio"
         ],
         "summary": "Delete a portfolio",
+        "description": "Menghapus data portfolio dari database berdasarkan ID.",
         "operationId": "deletePortfolio",
         "parameters": [
           {
@@ -212,6 +216,7 @@
           "Kategori"
         ],
         "summary": "Get all kategori layanan",
+        "description": "Mengambil semua data kategori layanan dari tabel kategori_layanan.",
         "operationId": "getKategori",
         "responses": {
           "200": {
@@ -246,6 +251,7 @@
           "Kategori"
         ],
         "summary": "Create a new kategori",
+        "description": "Menambahkan kategori layanan baru ke database.",
         "operationId": "createNewKategori",
         "requestBody": {
           "required": true,
@@ -289,6 +295,7 @@
           "Kategori"
         ],
         "summary": "Update a kategori",
+        "description": "Memperbarui data kategori layanan berdasarkan ID.",
         "operationId": "updateKategori",
         "parameters": [
           {
@@ -341,6 +348,7 @@
           "Kategori"
         ],
         "summary": "Delete a kategori",
+        "description": "Menghapus kategori layanan dari database berdasarkan ID.",
         "operationId": "deleteKategori",
         "parameters": [
           {
@@ -385,6 +393,7 @@
           "Contact"
         ],
         "summary": "Get all contacts",
+        "description": "Mengambil semua data kontak/pesan yang masuk dari form website, beserta nama kategori layanan dari JOIN.",
         "operationId": "getAllContacts",
         "responses": {
           "200": {
@@ -419,6 +428,7 @@
           "Contact"
         ],
         "summary": "Create a new contact",
+        "description": "Menyimpan pesan/kontak baru dari form 'Kirim Pesan Sekarang' di halaman website.",
         "operationId": "createNewContact",
         "requestBody": {
           "required": true,
@@ -462,6 +472,7 @@
           "Contact"
         ],
         "summary": "Update a contact",
+        "description": "Memperbarui data kontak berdasarkan ID.",
         "operationId": "updateContact",
         "parameters": [
           {
@@ -514,6 +525,7 @@
           "Contact"
         ],
         "summary": "Delete a contact",
+        "description": "Menghapus data kontak dari database berdasarkan ID.",
         "operationId": "deleteContact",
         "parameters": [
           {
@@ -558,6 +570,7 @@
           "Testimoni"
         ],
         "summary": "Get all testimoni",
+        "description": "Mengambil semua data testimoni klien dari database.",
         "operationId": "getAllTestimoni",
         "responses": {
           "200": {
@@ -592,6 +605,7 @@
           "Testimoni"
         ],
         "summary": "Create a new testimoni",
+        "description": "Menambahkan data testimoni klien baru ke database.",
         "operationId": "createNewTestimoni",
         "requestBody": {
           "required": true,
@@ -635,6 +649,7 @@
           "Testimoni"
         ],
         "summary": "Update a testimoni",
+        "description": "Memperbarui data testimoni berdasarkan ID.",
         "operationId": "updateTestimoni",
         "parameters": [
           {
@@ -687,6 +702,7 @@
           "Testimoni"
         ],
         "summary": "Delete a testimoni",
+        "description": "Menghapus data testimoni dari database berdasarkan ID.",
         "operationId": "deleteTestimoni",
         "parameters": [
           {
