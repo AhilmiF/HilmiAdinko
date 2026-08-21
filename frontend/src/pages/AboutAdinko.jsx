@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, ChevronLeft, ChevronRight, CheckCircle2, Award, ShieldCheck, Wrench, Wallet } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Gem, Sparkles, LayoutGrid, Wallet } from 'lucide-react';
 import { HeroFloatingBadge } from '../components/FloatingCta';
 
 export const AboutAdinko = () => {
@@ -45,7 +45,7 @@ export const AboutAdinko = () => {
               Solusi Rumput Sintetis Berkualitas untuk Berbagai Kebutuhan
             </h1>
             <p className="hero-subtitle">
-              Adinko hadir sebagai mitra terpercaya untuk kebutuhan rumput sintetis berkualitas di Pekanbaru dan Riau.
+              Dari rumah pribadi hingga area komersial, Adinko menghadirkan rumput sintetis dengan tampilan alami, pemasangan presisi, dan daya tahan tinggi.
             </p>
           </div>
         </div>
@@ -58,28 +58,34 @@ export const AboutAdinko = () => {
         <div className="container">
           <div className="dual-brand-grid">
             <div>
-              <span className="section-tag">SIAPA KAMI</span>
+              <span className="section-tag">SIAPA KAMI ?</span>
               <h2 className="section-title">
                 Berpengalaman dalam Pemasangan Rumput Sintetis Profesional
               </h2>
-              <p className="section-subtitle" style={{ marginBottom: '24px' }}>
-                Adinko adalah penyedia jasa rumput sintetis di Pekanbaru yang telah dipercaya oleh berbagai klien. Fokus pada kualitas material, kerapian pengerjaan, dan hasil akhir yang estetik serta tahan lama.
+              <p className="section-subtitle" style={{ marginBottom: '28px' }}>
+                Adinko adalah penyedia jasa rumput sintetis di Pekanbaru yang telah dipercaya oleh berbagai klien. Kami fokus pada kualitas material, kerapian pengerjaan, dan hasil akhir yang estetis serta tahan lama.
               </p>
-              <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-                <button 
-                  onClick={() => navigate('/kontak')} 
-                  className="btn-primary-hero"
-                  style={{ padding: '12px 24px', fontSize: '0.9rem' }}
-                >
-                  <span>Hubungi Kami</span>
-                </button>
-                <button 
-                  onClick={() => navigate('/portofolio')}
-                  className="btn-primary-hero"
-                  style={{ background: 'var(--green-700)', padding: '12px 24px', fontSize: '0.9rem' }}
-                >
-                  <span>Sertifikasi & Garansi Dimensi</span>
-                </button>
+              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                <span style={{ 
+                  background: 'var(--green-600)', 
+                  color: '#FFFFFF', 
+                  padding: '10px 22px', 
+                  borderRadius: '9999px', 
+                  fontSize: '0.88rem', 
+                  fontWeight: 600 
+                }}>
+                  Rumput Sintetis
+                </span>
+                <span style={{ 
+                  background: 'var(--green-600)', 
+                  color: '#FFFFFF', 
+                  padding: '10px 22px', 
+                  borderRadius: '9999px', 
+                  fontSize: '0.88rem', 
+                  fontWeight: 600 
+                }}>
+                  Vertical & Garden Sintetis
+                </span>
               </div>
             </div>
 
@@ -102,7 +108,7 @@ export const AboutAdinko = () => {
                   width: '40px',
                   height: '40px',
                   borderRadius: '50%',
-                  background: 'rgba(255,255,255,0.85)',
+                  background: 'rgba(255,255,255,0.9)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -124,7 +130,7 @@ export const AboutAdinko = () => {
                   width: '40px',
                   height: '40px',
                   borderRadius: '50%',
-                  background: 'rgba(255,255,255,0.85)',
+                  background: 'rgba(255,255,255,0.9)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -143,14 +149,18 @@ export const AboutAdinko = () => {
       {/* 3. VISI & MISI SECTION */}
       <section style={{ padding: '80px 0', background: 'var(--gray-bg)' }}>
         <div className="container">
-          <div className="text-center" style={{ marginBottom: '40px' }}>
-            <span className="section-tag">VISI & MISI</span>
-            <h2 className="section-title">
-              Tumbuh Menjadi Penyedia Terpercaya di Pekanbaru
-            </h2>
-            <p className="section-subtitle mx-auto">
-              Kami berkomitmen memberikan layanan terbaik untuk kualitas produk, kerapian pengerjaan, dan kepuasan pelanggan.
-            </p>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', alignItems: 'flex-start', marginBottom: '40px' }}>
+            <div>
+              <span className="section-tag">VISI & MISI</span>
+              <h2 className="section-title" style={{ margin: 0 }}>
+                Tumbuh Menjadi Penyedia Terpercaya di Pekanbaru
+              </h2>
+            </div>
+            <div>
+              <p className="section-subtitle" style={{ margin: 0, fontSize: '0.95rem', lineHeight: 1.6 }}>
+                Kami berkomitmen memberikan layanan terbaik lewat kualitas produk, pelayanan profesional, dan kepuasan pelanggan.
+              </p>
+            </div>
           </div>
 
           <div className="vision-mission-grid">
@@ -172,45 +182,45 @@ export const AboutAdinko = () => {
                 borderRadius: '16px',
                 color: '#FFFFFF'
               }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '6px' }}>Nilai Kami</div>
+                <div style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '8px' }}>Nilai Kami</div>
                 <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                  <span className="badge-tag">Kualitas</span>
-                  <span className="badge-tag">Kerapian</span>
-                  <span className="badge-tag">Profesionalitas</span>
+                  <span className="badge-tag" style={{ border: '1px solid rgba(255,255,255,0.4)', borderRadius: '9999px', padding: '4px 12px', fontSize: '0.8rem' }}>Kualitas</span>
+                  <span className="badge-tag" style={{ border: '1px solid rgba(255,255,255,0.4)', borderRadius: '9999px', padding: '4px 12px', fontSize: '0.8rem' }}>Kerapian</span>
+                  <span className="badge-tag" style={{ border: '1px solid rgba(255,255,255,0.4)', borderRadius: '9999px', padding: '4px 12px', fontSize: '0.8rem' }}>Profesionalisme</span>
                 </div>
               </div>
             </div>
 
             {/* Right: Visi & Misi Boxes */}
-            <div>
-              <div className="box-visi">
-                <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--green-700)', marginBottom: '8px' }}>
-                  Visi Kami
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{ background: '#EAF5D8', padding: '24px', borderRadius: '20px' }}>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#121212', marginBottom: '8px' }}>
+                  Visi kami
                 </h3>
-                <p style={{ fontSize: '0.92rem', color: '#333333', lineHeight: 1.6 }}>
-                  Menjadi penyedia rumput sintetis terbaik dan terdepan sekaligus inovatif di Riau dan sekitarnya.
+                <p style={{ fontSize: '0.9rem', color: '#444444', lineHeight: 1.5 }}>
+                  Menjadi penyedia solusi rumput sintetis dan fasilitas olahraga terbaik di Pekanbaru dan sekitarnya.
                 </p>
               </div>
 
-              <div className="box-misi">
-                <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#FFFFFF', marginBottom: '12px' }}>
-                  Misi Kami
+              <div style={{ background: 'var(--green-600)', padding: '24px', borderRadius: '20px', color: '#FFFFFF' }}>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#FFFFFF', marginBottom: '12px' }}>
+                  Misi kami
                 </h3>
-                <ul className="misi-list">
-                  <li>
-                    <span className="misi-bullet" />
-                    <span>Memberikan produk rumput sintetis unggul dengan standar keamanan tinggi</span>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.88rem' }}>
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#FFFFFF', display: 'inline-block', flexShrink: 0 }} />
+                    <span>Memberikan produk berkualitas tinggi dengan material premium terpilih</span>
                   </li>
-                  <li>
-                    <span className="misi-bullet" />
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.88rem' }}>
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#FFFFFF', display: 'inline-block', flexShrink: 0 }} />
                     <span>Pelayanan profesional</span>
                   </li>
-                  <li>
-                    <span className="misi-bullet" />
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.88rem' }}>
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#FFFFFF', display: 'inline-block', flexShrink: 0 }} />
                     <span>Harga kompetitif</span>
                   </li>
-                  <li>
-                    <span className="misi-bullet" />
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.88rem' }}>
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#FFFFFF', display: 'inline-block', flexShrink: 0 }} />
                     <span>Pengerjaan tepat waktu</span>
                   </li>
                 </ul>
@@ -220,81 +230,115 @@ export const AboutAdinko = () => {
         </div>
       </section>
 
-      {/* 4. FOKUS KEUNGGULAN SECTION */}
+      {/* 4. KENAPA MEMILIH KAMI? SECTION */}
       <section style={{ padding: '80px 0', background: 'var(--white)' }}>
         <div className="container">
           <div className="text-center">
-            <span className="section-tag">FOKUS KEUNGGULAN</span>
+            <span className="section-tag">KENAPA MEMILIH KAMI ?</span>
             <h2 className="section-title">Kami Mengutamakan Kualitas di Setiap Detail</h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px', marginTop: '40px' }}>
-            <div className="feature-card" style={{ cursor: 'default' }}>
-              <div className="feature-card-header">
-                <div className="feature-icon-box"><Award size={20} /></div>
-                <span className="feature-number">001</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', marginTop: '40px' }}>
+            {/* Card 001 */}
+            <div style={{ 
+              background: '#FFFFFF', 
+              border: '2px solid var(--green-400)', 
+              borderRadius: '20px', 
+              padding: '24px', 
+              boxShadow: 'var(--shadow-sm)',
+              position: 'relative'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+                <div style={{ color: 'var(--green-600)' }}><Gem size={28} /></div>
+                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#AAAAAA' }}>001</span>
               </div>
-              <div>
-                <h4 className="feature-card-title">Standar Lapangan Profesional</h4>
-                <p className="feature-card-desc">Kualitas material berstandar tinggi yang tahan cuaca tropis ekstrem.</p>
-              </div>
+              <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#121212', lineHeight: 1.4 }}>
+                Material rumput sintetis berkualitas premium
+              </h4>
             </div>
 
-            <div className="feature-card" style={{ cursor: 'default' }}>
-              <div className="feature-card-header">
-                <div className="feature-icon-box"><Wrench size={20} /></div>
-                <span className="feature-number">002</span>
+            {/* Card 002 */}
+            <div style={{ 
+              background: '#FFFFFF', 
+              border: '1px solid var(--gray-border)', 
+              borderRadius: '20px', 
+              padding: '24px', 
+              boxShadow: 'var(--shadow-sm)',
+              position: 'relative'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+                <div style={{ color: 'var(--gray-text)' }}><Sparkles size={28} /></div>
+                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#AAAAAA' }}>002</span>
               </div>
-              <div>
-                <h4 className="feature-card-title">Pemasangan Rapi & Presisi</h4>
-                <p className="feature-card-desc">Dikerjakan oleh teknisi ahli berpengalaman dengan kerapian sambungan maksimal.</p>
-              </div>
+              <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#121212', lineHeight: 1.4 }}>
+                Pemasangan rapi & presisi
+              </h4>
             </div>
 
-            <div className="feature-card" style={{ cursor: 'default' }}>
-              <div className="feature-card-header">
-                <div className="feature-icon-box"><ShieldCheck size={20} /></div>
-                <span className="feature-number">003</span>
+            {/* Card 003 */}
+            <div style={{ 
+              background: '#FFFFFF', 
+              border: '1px solid var(--gray-border)', 
+              borderRadius: '20px', 
+              padding: '24px', 
+              boxShadow: 'var(--shadow-sm)',
+              position: 'relative'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+                <div style={{ color: 'var(--gray-text)' }}><LayoutGrid size={28} /></div>
+                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#AAAAAA' }}>003</span>
               </div>
-              <div>
-                <h4 className="feature-card-title">Dilengkapi Sistem Drainase & Perawatan Mudah</h4>
-                <p className="feature-card-desc">Lapisan drainase cepat kering sehingga bebas becek dan mudah dibersihkan.</p>
-              </div>
+              <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#121212', lineHeight: 1.4 }}>
+                Bisa custom sesuai kebutuhan desain
+              </h4>
             </div>
 
-            <div className="feature-card" style={{ cursor: 'default' }}>
-              <div className="feature-card-header">
-                <div className="feature-icon-box"><Wallet size={20} /></div>
-                <span className="feature-number">004</span>
+            {/* Card 004 */}
+            <div style={{ 
+              background: '#FFFFFF', 
+              border: '1px solid var(--gray-border)', 
+              borderRadius: '20px', 
+              padding: '24px', 
+              boxShadow: 'var(--shadow-sm)',
+              position: 'relative'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+                <div style={{ color: 'var(--gray-text)' }}><Wallet size={28} /></div>
+                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#AAAAAA' }}>004</span>
               </div>
-              <div>
-                <h4 className="feature-card-title">Harga Transparan Tanpa Biaya Tersembunyi</h4>
-                <p className="feature-card-desc">Estimasi RAB jelas dan terperinci sejak survei lokasi pertama.</p>
-              </div>
+              <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#121212', lineHeight: 1.4 }}>
+                Harga transparan tanpa biaya tersembunyi
+              </h4>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. SOLUSI RUMPUT SINTETIS UNTUK BERBAGAI KEBUTUHAN */}
+      {/* 5. LAYANAN KAMI SECTION */}
       <section style={{ padding: '80px 0', background: 'var(--gray-bg)' }}>
         <div className="container">
-          <div className="text-center">
-            <span className="section-tag">PRODUK & LAYANAN</span>
-            <h2 className="section-title">Solusi Rumput Sintetis untuk Berbagai Kebutuhan</h2>
-            <p className="section-subtitle mx-auto">
-              Kebutuhan rumput sintetis hunian maupun komersial dengan fleksibilitas pemasangan di segala medan.
-            </p>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', alignItems: 'flex-start', marginBottom: '40px' }}>
+            <div>
+              <span className="section-tag">LAYANAN KAMI</span>
+              <h2 className="section-title" style={{ margin: 0 }}>
+                Solusi Rumput Sintetis untuk Berbagai Kebutuhan
+              </h2>
+            </div>
+            <div>
+              <p className="section-subtitle" style={{ margin: 0, fontSize: '0.95rem', lineHeight: 1.6 }}>
+                Kami melayani pemasangan rumput sintetis untuk taman rumah, dekorasi, hingga area komersial dengan hasil yang rapi dan modern.
+              </p>
+            </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px', margin: '40px 0' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', margin: '40px 0' }}>
             {solutions.map((item, idx) => (
               <div key={idx} className="project-card">
                 <div className="project-img-wrapper" style={{ height: '180px' }}>
                   <img src={item.img} alt={item.title} />
                 </div>
-                <div className="project-body" style={{ textAlign: 'center' }}>
-                  <h4 style={{ fontSize: '1rem', fontWeight: 700 }}>{item.title}</h4>
+                <div className="project-body" style={{ textAlign: 'left', padding: '16px' }}>
+                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700 }}>{item.title}</h4>
                 </div>
               </div>
             ))}
@@ -305,7 +349,7 @@ export const AboutAdinko = () => {
               onClick={() => navigate('/kontak')} 
               className="btn-primary-hero"
             >
-              <span>KONSULTASI GRATIS SEKARANG</span>
+              <span>Konsultasi GRATIS Sekarang</span>
               <span className="arrow-circle">
                 <ArrowRight size={14} />
               </span>
@@ -314,7 +358,7 @@ export const AboutAdinko = () => {
         </div>
       </section>
 
-      {/* 6. CTA BANNER (Dark Green Card) */}
+      {/* 6. MULAI SEKARANG BANNER (Dark Green Card) */}
       <section className="container" style={{ margin: '60px auto' }}>
         <div style={{ 
           background: 'var(--green-900)', 
@@ -324,12 +368,12 @@ export const AboutAdinko = () => {
           textAlign: 'center',
           boxShadow: 'var(--shadow-lg)'
         }}>
-          <span className="section-tag" style={{ color: 'var(--green-300)' }}>KITA SEKARANG</span>
+          <span className="section-tag" style={{ color: 'var(--green-300)' }}>MULAI SEKARANG</span>
           <h2 style={{ fontSize: '2.2rem', fontWeight: 800, margin: '10px 0 16px 0', color: '#FFFFFF' }}>
             Tertarik? Mari Diskusikan Proyek Anda
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.85)', maxWidth: '550px', margin: '0 auto 30px auto', fontSize: '1rem' }}>
-            Tentukan kebutuhan rumput sintetis impian Anda bersama tim spesialis kami.
+          <p style={{ color: 'rgba(255,255,255,0.85)', maxWidth: '550px', margin: '0 auto 30px auto', fontSize: '0.95rem' }}>
+            Survei gratis, konsultasi gratis, tanpa komitmen awal.
           </p>
           <button 
             onClick={() => navigate('/kontak')}
@@ -345,7 +389,7 @@ export const AboutAdinko = () => {
               gap: '12px'
             }}
           >
-            <span>Gabung bersama kami</span>
+            <span>Gabung dengan ratusan klien</span>
             <span className="arrow-circle" style={{ background: 'var(--green-600)', color: '#FFFFFF' }}>
               <ArrowRight size={14} />
             </span>

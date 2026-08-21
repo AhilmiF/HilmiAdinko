@@ -64,8 +64,8 @@ export const Testimoni = () => {
             gap: '24px', 
             marginTop: '36px' 
           }}>
-            {filteredReviews.map((review) => (
-              <ReviewCard key={review.id} review={review} variant="light" />
+            {filteredReviews.map((review, idx) => (
+              <ReviewCard key={review.id} review={review} variant="light" isActive={idx === 0} />
             ))}
           </div>
 

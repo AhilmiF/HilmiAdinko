@@ -1,0 +1,20 @@
+{
+  "name": "hilmiadinko-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Hilmi Adinko Project",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "author": "Ahmad Hilmi Fahrezi",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "multer": "^2.2.0",
+    "mysql2": "^3.23.2",
+    "nodemon": "^3.1.14"
+  }
+}

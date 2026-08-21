@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, ChevronLeft, ChevronRight, Award, Shield, Layers, Headphones } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Gem, Sparkles, LayoutGrid, Wallet } from 'lucide-react';
 import { HeroFloatingBadge } from '../components/FloatingCta';
 
 export const AboutGhazi = () => {
@@ -39,13 +39,13 @@ export const AboutGhazi = () => {
         <div className="container">
           <div className="hero-content">
             <div className="hero-tag">
-              Tentang Ghazi SportsHub
+              Tentang GhaziSportsHub
             </div>
             <h1 className="hero-title">
               Spesialis Pembangunan Lapangan Olahraga Profesional
             </h1>
             <p className="hero-subtitle">
-              Kami menghadirkan pembangunan lapangan olahraga berstandar tinggi dengan material berkualitas untuk performa maksimal atlet dan kepuasan komunitas.
+              Kami menghadirkan solusi pembangunan lapangan olahraga dengan standar profesional, kuat, dan siap digunakan untuk berbagai kebutuhan.
             </p>
           </div>
         </div>
@@ -58,17 +58,44 @@ export const AboutGhazi = () => {
         <div className="container">
           <div className="dual-brand-grid">
             <div>
-              <span className="section-tag">SIAPA KAMI</span>
+              <span className="section-tag">SIAPA KAMI ?</span>
               <h2 className="section-title">
                 Unit Khusus untuk Pembangunan Fasilitas Olahraga
               </h2>
-              <p className="section-subtitle" style={{ marginBottom: '24px' }}>
-                GhaziSportsHub merupakan unit pengembangan dari Adinko yang fokus pada pembangunan lapangan olahraga seperti Mini Soccer, Futsal, hingga Tenis dengan fasilitas terbaik.
+              <p className="section-subtitle" style={{ marginBottom: '28px' }}>
+                GhaziSportsHub merupakan unit pengembangan dari Adinko yang fokus pada pembangunan lapangan olahraga seperti futsal dan minisoccer dengan kualitas terbaik.
               </p>
-              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                <span className="badge-tag" style={{ background: 'var(--green-600)', color: '#FFF' }}>Mini Soccer</span>
-                <span className="badge-tag" style={{ background: 'var(--green-600)', color: '#FFF' }}>Futsal Arena</span>
-                <span className="badge-tag" style={{ background: 'var(--green-600)', color: '#FFF' }}>Tenis</span>
+              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                <span style={{ 
+                  background: 'var(--green-600)', 
+                  color: '#FFFFFF', 
+                  padding: '10px 22px', 
+                  borderRadius: '9999px', 
+                  fontSize: '0.88rem', 
+                  fontWeight: 600 
+                }}>
+                  Mini Golf
+                </span>
+                <span style={{ 
+                  background: 'var(--green-600)', 
+                  color: '#FFFFFF', 
+                  padding: '10px 22px', 
+                  borderRadius: '9999px', 
+                  fontSize: '0.88rem', 
+                  fontWeight: 600 
+                }}>
+                  Minisoccer
+                </span>
+                <span style={{ 
+                  background: 'var(--green-600)', 
+                  color: '#FFFFFF', 
+                  padding: '10px 22px', 
+                  borderRadius: '9999px', 
+                  fontSize: '0.88rem', 
+                  fontWeight: 600 
+                }}>
+                  Padel
+                </span>
               </div>
             </div>
 
@@ -90,11 +117,12 @@ export const AboutGhazi = () => {
                   width: '40px',
                   height: '40px',
                   borderRadius: '50%',
-                  background: 'rgba(255,255,255,0.85)',
+                  background: 'rgba(255,255,255,0.9)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'var(--black)'
+                  color: 'var(--black)',
+                  boxShadow: 'var(--shadow-sm)'
                 }}
                 aria-label="Previous Slide"
               >
@@ -111,11 +139,12 @@ export const AboutGhazi = () => {
                   width: '40px',
                   height: '40px',
                   borderRadius: '50%',
-                  background: 'rgba(255,255,255,0.85)',
+                  background: 'rgba(255,255,255,0.9)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'var(--black)'
+                  color: 'var(--black)',
+                  boxShadow: 'var(--shadow-sm)'
                 }}
                 aria-label="Next Slide"
               >
@@ -129,14 +158,18 @@ export const AboutGhazi = () => {
       {/* 3. VISI & MISI SECTION */}
       <section style={{ padding: '80px 0', background: 'var(--gray-bg)' }}>
         <div className="container">
-          <div className="text-center" style={{ marginBottom: '40px' }}>
-            <span className="section-tag">VISI & MISI</span>
-            <h2 className="section-title">
-              Membangun Fasilitas Olahraga Berkualitas
-            </h2>
-            <p className="section-subtitle mx-auto">
-              Kami berkomitmen memberikan layanan terbaik untuk kualitas produk, kepuasan pengerjaan, dan kepuasan pelanggan.
-            </p>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', alignItems: 'flex-start', marginBottom: '40px' }}>
+            <div>
+              <span className="section-tag">VISI & MISI</span>
+              <h2 className="section-title" style={{ margin: 0 }}>
+                Membangun Fasilitas Olahraga Berkualitas
+              </h2>
+            </div>
+            <div>
+              <p className="section-subtitle" style={{ margin: 0, fontSize: '0.95rem', lineHeight: 1.6 }}>
+                Kami berkomitmen memberikan layanan terbaik lewat kualitas produk, pelayanan profesional, dan kepuasan pelanggan.
+              </p>
+            </div>
           </div>
 
           <div className="vision-mission-grid">
@@ -158,45 +191,45 @@ export const AboutGhazi = () => {
                 borderRadius: '16px',
                 color: '#FFFFFF'
               }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '6px' }}>Nilai Kami</div>
+                <div style={{ fontSize: '0.85rem', fontWeight: 700, marginBottom: '8px' }}>Nilai Kami</div>
                 <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                  <span className="badge-tag">Kualitas</span>
-                  <span className="badge-tag">Ketahanan</span>
-                  <span className="badge-tag">Profesionalitas</span>
+                  <span className="badge-tag" style={{ border: '1px solid rgba(255,255,255,0.4)', borderRadius: '9999px', padding: '4px 12px', fontSize: '0.8rem' }}>Kualitas</span>
+                  <span className="badge-tag" style={{ border: '1px solid rgba(255,255,255,0.4)', borderRadius: '9999px', padding: '4px 12px', fontSize: '0.8rem' }}>Ketahanan</span>
+                  <span className="badge-tag" style={{ border: '1px solid rgba(255,255,255,0.4)', borderRadius: '9999px', padding: '4px 12px', fontSize: '0.8rem' }}>Profesionalisme</span>
                 </div>
               </div>
             </div>
 
             {/* Right: Visi & Misi Boxes */}
-            <div>
-              <div className="box-visi">
-                <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--green-700)', marginBottom: '8px' }}>
-                  Visi Kami
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{ background: '#EAF5D8', padding: '24px', borderRadius: '20px' }}>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#121212', marginBottom: '8px' }}>
+                  Visi kami
                 </h3>
-                <p style={{ fontSize: '0.92rem', color: '#333333', lineHeight: 1.6 }}>
-                  Menjadi kontraktor pembangunan lapangan olahraga terpercaya dan terdepan di Riau dan sekitarnya.
+                <p style={{ fontSize: '0.9rem', color: '#444444', lineHeight: 1.5 }}>
+                  Menjadi penyedia solusi rumput sintetis dan fasilitas olahraga terbaik di Pekanbaru dan sekitarnya.
                 </p>
               </div>
 
-              <div className="box-misi">
-                <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#FFFFFF', marginBottom: '12px' }}>
-                  Misi Kami
+              <div style={{ background: 'var(--green-600)', padding: '24px', borderRadius: '20px', color: '#FFFFFF' }}>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#FFFFFF', marginBottom: '12px' }}>
+                  Misi kami
                 </h3>
-                <ul className="misi-list">
-                  <li>
-                    <span className="misi-bullet" />
-                    <span>Memberikan produk rumput sintetis unggul dengan standar keamanan tinggi</span>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.88rem' }}>
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#FFFFFF', display: 'inline-block', flexShrink: 0 }} />
+                    <span>Memberikan produk berkualitas tinggi dengan material premium terpilih</span>
                   </li>
-                  <li>
-                    <span className="misi-bullet" />
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.88rem' }}>
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#FFFFFF', display: 'inline-block', flexShrink: 0 }} />
                     <span>Pelayanan profesional</span>
                   </li>
-                  <li>
-                    <span className="misi-bullet" />
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.88rem' }}>
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#FFFFFF', display: 'inline-block', flexShrink: 0 }} />
                     <span>Harga kompetitif</span>
                   </li>
-                  <li>
-                    <span className="misi-bullet" />
+                  <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.88rem' }}>
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#FFFFFF', display: 'inline-block', flexShrink: 0 }} />
                     <span>Pengerjaan tepat waktu</span>
                   </li>
                 </ul>
@@ -206,81 +239,115 @@ export const AboutGhazi = () => {
         </div>
       </section>
 
-      {/* 4. FOKUS KEUNGGULAN SECTION */}
+      {/* 4. KENAPA MEMILIH KAMI ? SECTION */}
       <section style={{ padding: '80px 0', background: 'var(--white)' }}>
         <div className="container">
           <div className="text-center">
-            <span className="section-tag">FOKUS KEUNGGULAN</span>
+            <span className="section-tag">KENAPA MEMILIH KAMI ?</span>
             <h2 className="section-title">Kami Mengutamakan Kualitas di Setiap Detail</h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px', marginTop: '40px' }}>
-            <div className="feature-card" style={{ cursor: 'default' }}>
-              <div className="feature-card-header">
-                <div className="feature-icon-box"><Award size={20} /></div>
-                <span className="feature-number">001</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', marginTop: '40px' }}>
+            {/* Card 001 */}
+            <div style={{ 
+              background: '#FFFFFF', 
+              border: '2px solid var(--green-400)', 
+              borderRadius: '20px', 
+              padding: '24px', 
+              boxShadow: 'var(--shadow-sm)',
+              position: 'relative'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+                <div style={{ color: 'var(--green-600)' }}><Gem size={28} /></div>
+                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#AAAAAA' }}>001</span>
               </div>
-              <div>
-                <h4 className="feature-card-title">Standar Lapangan Profesional</h4>
-                <p className="feature-card-desc">Konstruksi dan marking lapangan mengikuti standar resmi induk olahraga internasional.</p>
-              </div>
+              <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#121212', lineHeight: 1.4 }}>
+                Standar lapangan profesional
+              </h4>
             </div>
 
-            <div className="feature-card" style={{ cursor: 'default' }}>
-              <div className="feature-card-header">
-                <div className="feature-icon-box"><Shield size={20} /></div>
-                <span className="feature-number">002</span>
+            {/* Card 002 */}
+            <div style={{ 
+              background: '#FFFFFF', 
+              border: '1px solid var(--gray-border)', 
+              borderRadius: '20px', 
+              padding: '24px', 
+              boxShadow: 'var(--shadow-sm)',
+              position: 'relative'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+                <div style={{ color: 'var(--gray-text)' }}><Sparkles size={28} /></div>
+                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#AAAAAA' }}>002</span>
               </div>
-              <div>
-                <h4 className="feature-card-title">Konstruksi Kuat & Kokoh</h4>
-                <p className="feature-card-desc">Struktur pondasi, tiang, dan jaring pagar dirancang untuk pemakaian intensif jangka panjang.</p>
-              </div>
+              <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#121212', lineHeight: 1.4 }}>
+                Konsultasi dari tahap perencanaan
+              </h4>
             </div>
 
-            <div className="feature-card" style={{ cursor: 'default' }}>
-              <div className="feature-card-header">
-                <div className="feature-icon-box"><Layers size={20} /></div>
-                <span className="feature-number">003</span>
+            {/* Card 003 */}
+            <div style={{ 
+              background: '#FFFFFF', 
+              border: '1px solid var(--gray-border)', 
+              borderRadius: '20px', 
+              padding: '24px', 
+              boxShadow: 'var(--shadow-sm)',
+              position: 'relative'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+                <div style={{ color: 'var(--gray-text)' }}><LayoutGrid size={28} /></div>
+                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#AAAAAA' }}>003</span>
               </div>
-              <div>
-                <h4 className="feature-card-title">Drainase & Ukuran Lapangan Presisi</h4>
-                <p className="feature-card-desc">Sistem resapan air modern memastikan lapangan dapat segera digunakan pasca hujan lebat.</p>
-              </div>
+              <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#121212', lineHeight: 1.4 }}>
+                Bisa custom desain & ukuran lapangan
+              </h4>
             </div>
 
-            <div className="feature-card" style={{ cursor: 'default' }}>
-              <div className="feature-card-header">
-                <div className="feature-icon-box"><Headphones size={20} /></div>
-                <span className="feature-number">004</span>
+            {/* Card 004 */}
+            <div style={{ 
+              background: '#FFFFFF', 
+              border: '1px solid var(--gray-border)', 
+              borderRadius: '20px', 
+              padding: '24px', 
+              boxShadow: 'var(--shadow-sm)',
+              position: 'relative'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+                <div style={{ color: 'var(--gray-text)' }}><Wallet size={28} /></div>
+                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#AAAAAA' }}>004</span>
               </div>
-              <div>
-                <h4 className="feature-card-title">Dukungan Perawatan Pasca Selesai</h4>
-                <p className="feature-card-desc">Layanan purna jual berkala untuk menjaga kualitas dan performa rumput tetap prima.</p>
-              </div>
+              <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#121212', lineHeight: 1.4 }}>
+                Dukungan maintenance & after sales.
+              </h4>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. PEMBANGUNAN LAPANGAN SESUAI KEBUTUHAN ANDA */}
+      {/* 5. LAYANAN KAMI SECTION */}
       <section style={{ padding: '80px 0', background: 'var(--gray-bg)' }}>
         <div className="container">
-          <div className="text-center">
-            <span className="section-tag">FASILITAS OLAHRAGA</span>
-            <h2 className="section-title">Pembangunan Lapangan Sesuai Kebutuhan Anda</h2>
-            <p className="section-subtitle mx-auto">
-              Mulai dari futsal hingga mini soccer, kami menyediakan paket pengerjaan lengkap dari fondasi hingga jaring keliling.
-            </p>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', alignItems: 'flex-start', marginBottom: '40px' }}>
+            <div>
+              <span className="section-tag">LAYANAN KAMI</span>
+              <h2 className="section-title" style={{ margin: 0 }}>
+                Pembangunan Lapangan Sesuai Kebutuhan Anda
+              </h2>
+            </div>
+            <div>
+              <p className="section-subtitle" style={{ margin: 0, fontSize: '0.95rem', lineHeight: 1.6 }}>
+                Mulai dari futsal hingga minisoccer, kami menyediakan paket lengkap dari desain hingga pengerjaan lapangan.
+              </p>
+            </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px', margin: '40px 0' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', margin: '40px 0' }}>
             {sportsCategories.map((item, idx) => (
               <div key={idx} className="project-card">
                 <div className="project-img-wrapper" style={{ height: '180px' }}>
                   <img src={item.img} alt={item.title} />
                 </div>
-                <div className="project-body" style={{ textAlign: 'center' }}>
-                  <h4 style={{ fontSize: '1rem', fontWeight: 700 }}>{item.title}</h4>
+                <div className="project-body" style={{ textAlign: 'left', padding: '16px' }}>
+                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700 }}>{item.title}</h4>
                 </div>
               </div>
             ))}
@@ -291,7 +358,7 @@ export const AboutGhazi = () => {
               onClick={() => navigate('/kontak')} 
               className="btn-primary-hero"
             >
-              <span>KONSULTASI GRATIS SEKARANG</span>
+              <span>Konsultasi GRATIS Sekarang</span>
               <span className="arrow-circle">
                 <ArrowRight size={14} />
               </span>
@@ -300,7 +367,7 @@ export const AboutGhazi = () => {
         </div>
       </section>
 
-      {/* 6. CTA BANNER (Dark Green Card) */}
+      {/* 6. MULAI SEKARANG BANNER (Dark Green Card) */}
       <section className="container" style={{ margin: '60px auto' }}>
         <div style={{ 
           background: 'var(--green-900)', 
@@ -310,12 +377,12 @@ export const AboutGhazi = () => {
           textAlign: 'center',
           boxShadow: 'var(--shadow-lg)'
         }}>
-          <span className="section-tag" style={{ color: 'var(--green-300)' }}>KITA SEKARANG</span>
+          <span className="section-tag" style={{ color: 'var(--green-300)' }}>MULAI SEKARANG</span>
           <h2 style={{ fontSize: '2.2rem', fontWeight: 800, margin: '10px 0 16px 0', color: '#FFFFFF' }}>
             Bangun Lapangan Impian Anda Bersama Ghazi
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.85)', maxWidth: '550px', margin: '0 auto 30px auto', fontSize: '1rem' }}>
-            Tentukan standar fasilitas olahraga impian Anda bersama tim ahli kami.
+          <p style={{ color: 'rgba(255,255,255,0.85)', maxWidth: '550px', margin: '0 auto 30px auto', fontSize: '0.95rem' }}>
+            Dari konsultasi awal hingga perencanaan dan pengerjaan lapangan olahraga impian Anda.
           </p>
           <button 
             onClick={() => navigate('/kontak')}
@@ -331,7 +398,7 @@ export const AboutGhazi = () => {
               gap: '12px'
             }}
           >
-            <span>Gabung bersama kami</span>
+            <span>Gabung dengan ratusan klien</span>
             <span className="arrow-circle" style={{ background: 'var(--green-600)', color: '#FFFFFF' }}>
               <ArrowRight size={14} />
             </span>

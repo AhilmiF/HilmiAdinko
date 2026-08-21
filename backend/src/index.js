@@ -1,6 +1,7 @@
 require('dotenv').config();
 const PORT = process.env.PORT || 4000;
 const express = require('express');
+const cors = require('cors');
 
 const upload = require('./middleware/multer');
 const middlewareLogRequest = require('./middleware/logs');
@@ -21,6 +22,9 @@ const testimoniRoute = require('./routes/testimoniRoute');
 
 
 const app = express();
+
+// Middleware CORS
+app.use(cors());
 
 // Middleware log request
 app.use(middlewareLogRequest);

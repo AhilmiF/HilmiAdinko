@@ -17,12 +17,29 @@ export const ContactForm = ({ title = "Kirim Pesan Sekarang" }) => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     // Prepare message for WhatsApp
     const message = `Halo Adinko & GhaziSportsHub,%0A%0A*Konsultasi Proyek Baru*%0A- *Nama:* ${encodeURIComponent(formData.nama)}%0A- *No. WhatsApp:* ${encodeURIComponent(formData.whatsapp)}%0A- *Lokasi Proyek:* ${encodeURIComponent(formData.lokasi)}%0A- *Kebutuhan Layanan:* ${encodeURIComponent(formData.kebutuhan)}%0A- *Keterangan:* ${encodeURIComponent(formData.keterangan || '-')}%0A%0AMohon info estimasi dan penjadwalan survei. Terima kasih.`;
     
+    try {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000';
+      await fetch(`${apiBaseUrl}/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nama_lengkap: formData.nama,
+          no_whatsapp: formData.whatsapp,
+          lokasi: formData.lokasi,
+          keterangan: formData.keterangan,
+          kategori: 1
+        })
+      });
+    } catch (err) {
+      console.warn('Backend API error / offline:', err);
+    }
+
     setSubmitted(true);
     
     // Open WhatsApp after small feedback delay

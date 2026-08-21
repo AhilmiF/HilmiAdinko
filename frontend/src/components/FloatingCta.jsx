@@ -1,6 +1,6 @@
 import React from 'react';
-import { Phone, MessageCircle } from 'lucide-react';
 import { siteConfig } from '../data/siteData';
+import { WhatsAppIcon } from '../assets/Icons';
 
 // Hero Section Floating Badge
 export const HeroFloatingBadge = () => {
@@ -19,7 +19,7 @@ export const HeroFloatingBadge = () => {
         aria-label="Konsultasi via WhatsApp"
         title="Chat via WhatsApp"
       >
-        <MessageCircle size={28} />
+        <WhatsAppIcon size={28} color="#FFFFFF" />
       </button>
     </div>
   );
@@ -39,7 +39,7 @@ export const GlobalWhatsAppSticky = () => {
         aria-label="Hubungi WhatsApp"
         title="Chat WhatsApp Sekarang"
       >
-        <MessageCircle size={28} />
+        <WhatsAppIcon size={30} color="#FFFFFF" />
       </button>
     </div>
   );

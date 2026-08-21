@@ -12,16 +12,16 @@ import { AdinkoLogo, GhaziLogo } from '../assets/Logos';
 
 export const Home = () => {
   const navigate = useNavigate();
-  const [activeFilter, setActiveFilter] = useState('Semua');
+  const [activeFilter, setActiveFilter] = useState('Taman');
 
-  const filterTabs = ['Semua', 'Taman Rumah', 'Mini Soccer', 'Futsal', 'Lapangan Lainnya'];
+  const filterTabs = ['Taman', 'Vertical Garden', 'Lapangan Futsal', 'Minisoccer', 'Olahraga Lainnya'];
 
   const filteredProjects = portfolioData.filter(item => {
-    if (activeFilter === 'Semua') return true;
-    if (activeFilter === 'Taman Rumah') return item.category === 'Taman';
-    if (activeFilter === 'Mini Soccer') return item.category === 'Minisoccer';
-    if (activeFilter === 'Futsal') return item.category === 'Lapangan Futsal';
-    if (activeFilter === 'Lapangan Lainnya') return item.category === 'Olahraga Lainnya' || item.category === 'Vertical Garden';
+    if (activeFilter === 'Taman') return item.category === 'Taman';
+    if (activeFilter === 'Vertical Garden') return item.category === 'Vertical Garden';
+    if (activeFilter === 'Lapangan Futsal') return item.category === 'Lapangan Futsal';
+    if (activeFilter === 'Minisoccer') return item.category === 'Minisoccer';
+    if (activeFilter === 'Olahraga Lainnya') return item.category === 'Olahraga Lainnya';
     return true;
   }).slice(0, 6);
 
@@ -36,13 +36,13 @@ export const Home = () => {
         <div className="container">
           <div className="hero-content">
             <div className="hero-tag">
-              {siteConfig.since}
+              Terpercaya Sejak 2018
             </div>
             <h1 className="hero-title">
               Jasa Rumput Sintetis & Lapangan Olahraga Profesional Pekanbaru
             </h1>
             <p className="hero-subtitle">
-              Rumput sintetis berkualitas tinggi untuk kebutuhan taman & lapangan olahraga profesional Pekanbaru & Riau.
+              Solusi lengkap untuk taman, dekorasi, hingga lapangan futsal & minisoccer dengan hasil rapi, kuat, dan bergaransi.
             </p>
             <div className="hero-actions">
               <button 
@@ -59,7 +59,9 @@ export const Home = () => {
                 className="btn-secondary-hero"
               >
                 <span>Lihat Portofolio</span>
-                <ChevronRight size={16} />
+                <span className="arrow-circle" style={{ background: 'rgba(255,255,255,0.2)', color: '#FFFFFF' }}>
+                  <ArrowRight size={14} />
+                </span>
               </button>
             </div>
           </div>
@@ -69,9 +71,12 @@ export const Home = () => {
         <HeroFloatingBadge />
       </section>
 
-      {/* 2. STATS BAR */}
+      {/* 2. STATS BAR (TRUST METRICS) */}
       <section className="stats-bar">
         <div className="container">
+          <div className="text-center" style={{ marginBottom: '16px' }}>
+            <span className="section-tag" style={{ margin: 0 }}>TRUST</span>
+          </div>
           <div className="stats-grid">
             {siteConfig.stats.map((stat, i) => (
               <div key={i} className="stat-item">
@@ -88,12 +93,12 @@ export const Home = () => {
         <div className="container">
           <div className="dual-brand-grid">
             <div>
-              <span className="section-tag">DUA BRAND KAMI</span>
+              <span className="section-tag">TENTANG KAMI</span>
               <h2 className="section-title">
                 Dua Brand, Satu Komitmen: Kualitas Terbaik
               </h2>
               <p className="section-subtitle" style={{ marginBottom: '28px' }}>
-                Kami menghadirkan kolaborasi terpadu antara <strong>Adinko</strong> (spesialis rumput sintetis taman & lanskap hunian) serta <strong>GhaziSportsHub</strong> (kontraktor fasilitas lapangan olahraga berstandar profesional).
+                Adinko adalah penyedia jasa rumput sintetis di Pekanbaru yang telah dipercaya oleh berbagai klien, mulai dari rumah pribadi hingga proyek komersial. Kini kami berkembang menyediakan solusi pembangunan lapangan olahraga melalui unit khusus kami.
               </p>
               <button 
                 onClick={() => navigate('/layanan')}
@@ -121,13 +126,13 @@ export const Home = () => {
                   />
                   <div className="brand-card-logo-overlay">
                     <div style={{ background: 'rgba(0,0,0,0.5)', padding: '12px', borderRadius: '50%' }}>
-                      <AdinkoLogo size={42} showText={false} />
+                      <AdinkoLogo size={42} />
                     </div>
                   </div>
                 </div>
                 <div className="brand-card-body">
                   <h3 className="brand-card-title">Rumput Sintetis</h3>
-                  <p className="brand-card-text">Taman & lanskap hunian elegan ramah anak</p>
+                  <p className="brand-card-text">Untuk taman, dekorasi, dan area komersial.</p>
                 </div>
               </div>
 
@@ -144,13 +149,13 @@ export const Home = () => {
                   />
                   <div className="brand-card-logo-overlay">
                     <div style={{ background: 'rgba(0,0,0,0.5)', padding: '12px', borderRadius: '50%' }}>
-                      <GhaziLogo size={42} color="#FFFFFF" />
+                      <GhaziLogo size={42} />
                     </div>
                   </div>
                 </div>
                 <div className="brand-card-body">
                   <h3 className="brand-card-title">Lapangan Olahraga</h3>
-                  <p className="brand-card-text">Mini soccer, futsal, padel & jaring pengaman</p>
+                  <p className="brand-card-text">Futsal, minisoccer, mini golf, dan lainnya.</p>
                 </div>
               </div>
             </div>
@@ -162,16 +167,13 @@ export const Home = () => {
       <section className="interactive-features-section">
         <div className="container">
           <div className="text-center">
-            <span className="section-tag">KEUNGGULAN KAMI</span>
+            <span className="section-tag">KEUNGGULAN</span>
             <h2 className="section-title">Solusi Tepat untuk Hunian Anda</h2>
-            <p className="section-subtitle mx-auto">
-              Kualitas pengerjaan presisi dengan jaminan kepuasan dan transparansi harga untuk setiap proyek Anda.
-            </p>
           </div>
 
           <FeatureCards activeIndexDefault={0} />
 
-          <div className="text-center">
+          <div className="text-center" style={{ marginTop: '36px' }}>
             <button 
               onClick={() => navigate('/kontak')} 
               className="btn-primary-hero"
@@ -189,11 +191,8 @@ export const Home = () => {
       <section style={{ padding: '80px 0', background: 'var(--white)' }}>
         <div className="container">
           <div className="text-center">
-            <span className="section-tag">PORTOFOLIO</span>
+            <span className="section-tag">GALLERY</span>
             <h2 className="section-title">Hasil Pekerjaan Kami</h2>
-            <p className="section-subtitle mx-auto">
-              Dokumentasi nyata instalasi rumput sintetis dan lapangan olahraga terbaik di Pekanbaru.
-            </p>
           </div>
 
           {/* Filter Tabs */}
@@ -233,35 +232,42 @@ export const Home = () => {
       {/* 6. TESTIMONIALS SECTION (Dark Box Container) */}
       <section className="container">
         <div className="testimonials-dark-container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '20px' }}>
             <div>
               <span className="section-tag" style={{ color: 'var(--green-300)' }}>TESTIMONI KLIEN</span>
               <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#FFFFFF', lineHeight: 1.2 }}>
                 Apa Kata Klien Kami?
               </h2>
-              <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', marginTop: '6px' }}>
-                dari Google Review & Pelanggan Setia
-              </p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '10px' }}>
+                <span style={{ fontWeight: 800, fontSize: '1.1rem', color: '#FFFFFF' }}>5.0</span>
+                <div style={{ display: 'flex', gap: '2px', color: 'var(--gold-400)' }}>
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={16} fill="var(--gold-400)" color="var(--gold-400)" />
+                  ))}
+                </div>
+                <span style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.7)' }}>· Based on 100+ reviews</span>
+              </div>
             </div>
 
-            {/* Google Rating Star Badge */}
-            <div style={{ 
-              background: 'rgba(255,255,255,0.12)', 
-              backdropFilter: 'blur(8px)', 
-              padding: '10px 20px', 
-              borderRadius: '9999px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px'
-            }}>
-              <span style={{ fontWeight: 800, fontSize: '1.2rem', color: '#FFFFFF' }}>5.0</span>
-              <div style={{ display: 'flex', gap: '2px', color: 'var(--gold-400)' }}>
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={16} fill="var(--gold-400)" color="var(--gold-400)" />
-                ))}
-              </div>
-              <span style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.7)' }}>Google Reviews</span>
-            </div>
+            {/* Google Review Pill Button */}
+            <button 
+              onClick={() => window.open(siteConfig.contacts.mapsUrl, '_blank')}
+              style={{ 
+                background: '#FFFFFF', 
+                color: '#121212',
+                padding: '10px 20px', 
+                borderRadius: '9999px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                fontWeight: 700,
+                fontSize: '0.85rem',
+                boxShadow: '0 4px 14px rgba(0,0,0,0.15)'
+              }}
+            >
+              <span>Review us on Google</span>
+              <MapPin size={16} color="#E94235" />
+            </button>
           </div>
 
           {/* 3 Review Cards Grid */}
@@ -287,7 +293,7 @@ export const Home = () => {
                 boxShadow: '0 4px 14px rgba(0,0,0,0.2)'
               }}
             >
-              <span>Lihat Semua Testimoni</span>
+              <span>Gabung dengan ratusan klien</span>
               <span className="arrow-circle" style={{ background: 'var(--green-600)', color: '#FFFFFF' }}>
                 <ArrowRight size={14} />
               </span>
@@ -356,36 +362,37 @@ export const Home = () => {
               </div>
 
               <button 
-                onClick={() => window.open(siteConfig.contacts.mapsUrl, '_blank')}
+                onClick={() => navigate('/kontak')}
                 className="btn-primary-hero"
                 style={{ width: '100%', justifyContent: 'center' }}
               >
-                <span>Petunjuk Arah Google Maps</span>
+                <span>Konsultasi GRATIS Sekarang</span>
                 <span className="arrow-circle">
-                  <Navigation size={14} />
+                  <ArrowRight size={14} />
                 </span>
               </button>
             </div>
 
             {/* Right Column: Interactive Consultation Form */}
-            <ContactForm title="Kirim Pesan ke Kami" />
+            <ContactForm title="Kirim Pesan Sekarang" />
           </div>
         </div>
       </section>
 
-      {/* 8. BOTTOM CTA BANNER */}
-      <section style={{ padding: '40px 0', background: 'var(--green-50)', textAlign: 'center' }}>
+      {/* 8. BOTTOM CALLOUT BANNER */}
+      <section style={{ padding: '60px 0', background: '#FFFFFF', textAlign: 'center' }}>
         <div className="container">
-          <p style={{ 
-            fontSize: '1.25rem', 
+          <span className="section-tag">USE OUR SERVICES</span>
+          <h3 style={{ 
+            fontSize: '1.35rem', 
             fontWeight: 700, 
-            color: 'var(--green-800)', 
+            color: 'var(--black)', 
             maxWidth: '750px', 
-            margin: '0 auto',
+            margin: '8px auto 0 auto',
             lineHeight: 1.5
           }}>
-            Jangan tunda lagi wujudkan taman atau lapangan impian Anda bersama kami sekarang!
-          </p>
+            Jangan tunda lagi, wujudkan taman atau lapangan impian Anda bersama kami sekarang juga.
+          </h3>
         </div>
       </section>
     </div>

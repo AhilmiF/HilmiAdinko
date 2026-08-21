@@ -1,11 +1,14 @@
 import React from 'react';
 import { Star } from 'lucide-react';
 
-export const ReviewCard = ({ review, variant = "light" }) => {
+export const ReviewCard = ({ review, variant = "light", isActive = false }) => {
   const isDark = variant === "dark";
 
   return (
-    <div className={isDark ? "review-card" : "review-card-light"}>
+    <div 
+      className={isDark ? "review-card" : "review-card-light"}
+      style={isActive ? { border: '2px solid var(--green-500)', background: '#FFFFFF' } : {}}
+    >
       <p className="review-text">
         "{review.text}"
       </p>

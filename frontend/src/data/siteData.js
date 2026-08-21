@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Adinko × GhaziSportsHub",
   tagline: "Penyedia solusi rumput sintetis dan fasilitas olahraga profesional terbaik di Pekanbaru & Riau. Dipercaya oleh 1000+ klien.",
-  since: "Pekanbaru Sejak 2019",
+  since: "Terpercaya Sejak 2018",
   contacts: {
     address: "Jl. Todak No.113 Tangkerang Barat, Kec. Marpoyan Damai, Kota Pekanbaru, Riau",
     whatsappAdinko: "0852-6445-6566",
@@ -14,9 +14,9 @@ export const siteConfig = {
   },
   stats: [
     { value: "500+", label: "Proyek Selesai" },
-    { value: "8+", label: "Tahun Pengalaman" },
-    { value: "Premium", label: "Kualitas Terbaik" },
-    { value: "Garansi", label: "Kepuasan Terjamin" }
+    { value: "Expert", label: "Tim Profesional" },
+    { value: "Premium", label: "Material Pilihan" },
+    { value: "Gratis", label: "Layanan Survei" }
   ]
 };
 
@@ -34,7 +34,7 @@ export const interactiveFeatures = [
     id: "002",
     number: "002",
     title: "Custom Desain",
-    description: "Personalisasi desain sesuai dengan keinginan dan kebutuhan Anda.",
+    description: "Penyesuaian desain sesuai dengan keinginan dan kebutuhan Anda.",
     icon: "layout",
     bgImage: "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=800&q=80"
   },
@@ -42,7 +42,7 @@ export const interactiveFeatures = [
     id: "003",
     number: "003",
     title: "Harga Jujur",
-    description: "Transparansi total sejak awal tanpa ada biaya tersembunyi.",
+    description: "Transparansi estimasi biaya tanpa biaya tersembunyi.",
     icon: "gem",
     bgImage: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80"
   },
@@ -197,31 +197,30 @@ export const portfolioData = [
     image: "https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=800&q=80"
   }
 ];
-
 // Testimoni Data
 export const testimonialsData = [
   {
     id: 1,
-    name: "Ajo WW",
-    time: "6 years ago",
+    name: "Aja Will",
+    time: "4 months ago",
     category: "Rumput Sintetis",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80",
-    text: "Rekomendet banget ini.. hasilnya rapih, rumputnya berkualitas ngk mengecewakan... ditunggu kerjasama selanjutnya, sukses selalu.. :)"
+    text: "Rekomendet banget ini. hasilnya rapih, rumputnya berkualitas ngk mengecewakan... ditunggu kerjasama selanjutnya, sukses selalu.. :)"
   },
   {
     id: 2,
     name: "Badriah Official",
-    time: "11 months ago",
+    time: "5 months ago",
     category: "Rumput Sintetis",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
-    text: "Pelayanan bagus banget trus juga harganya itu lohh wow dehh, berkualitas juga and rumput nya sintetis rapih pula pekerjaan nya sukaaa dehhh😍🥰 ..."
+    text: "Pelayanan bagus banget trus juga harganya itu lohh wow dehh, berkualitas juga and rumput nya sintetis rapih pula pekerjaan nya sukaaa dehhhh🧡🧡..."
   },
   {
     id: 3,
-    name: "Yoga Jundirwan",
-    time: "3 years ago",
+    name: "Yoga Jundirwon",
+    time: "2 years ago",
     category: "Rumput Sintetis",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=150&q=80",
@@ -229,29 +228,29 @@ export const testimonialsData = [
   },
   {
     id: 4,
-    name: "Ilham Akbar Sirait",
+    name: "Ilham Akbar Siregar",
     time: "3 months ago",
     category: "Lapangan Olahraga",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
-    text: "Pelayanan nya super exelent, pengerjaan lapangan mini soccer selesai tepat waktu dan jaring terpasang sangat kokoh."
+    text: "Pelayanan nya super exelent"
   },
   {
     id: 5,
-    name: "Aditya Mustika",
-    time: "7 months ago",
+    name: "Jellitya Mustika",
+    time: "1 month ago",
     category: "Vertical Garden",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
-    text: "Pelayanan baik dan harga terjangkau 👍 ... taman sintetis di cafe kami sekarang jadi spot foto favorit pelanggan."
+    text: "Pelayanan baik dan harga terjangkau 👍 ..."
   },
   {
     id: 6,
     name: "Zakira Mardian",
-    time: "7 months ago",
+    time: "4 months ago",
     category: "Rumput Sintetis",
     rating: 5,
     avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80",
-    text: "Mantull dan orgnya ramah Kerja rapi, recommended untuk siapa saja di Pekanbaru yang mau pasang rumput sintetis."
+    text: "Mantull dan orgnya ramah Kerja rapi"
   }
 ];

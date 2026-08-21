@@ -32,25 +32,32 @@ export const Layanan = () => {
         <HeroFloatingBadge />
       </section>
 
-      {/* 2. DUAL BRAND SERVICES COMPARISON */}
-      <section style={{ padding: '80px 0', background: 'var(--white)' }}>
+      {/* 2. DUAL BRAND SERVICES CATALOG */}
+      <section style={{ padding: '80px 0', background: 'var(--gray-bg)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '48px' }}>
             {/* Brand 1: ADINKO */}
-            <div style={{ background: 'var(--gray-bg)', borderRadius: '24px', padding: '36px', border: '1px solid var(--gray-border)' }}>
+            <div>
               <span className="section-tag">{servicesData.adinko.brand}</span>
-              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '14px' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '14px', color: 'var(--black)' }}>
                 {servicesData.adinko.title}
               </h2>
-              <p style={{ color: 'var(--gray-text)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '24px' }}>
+              <p style={{ color: 'var(--gray-text)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '28px' }}>
                 {servicesData.adinko.description}
               </p>
-              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', maxWidth: '380px' }}>
                 {servicesData.adinko.tags.map((tag, idx) => (
                   <span 
                     key={idx} 
-                    className="badge-tag"
-                    style={{ background: 'var(--green-50)', color: 'var(--green-700)', borderColor: 'var(--green-300)' }}
+                    style={{ 
+                      background: '#EAF5D8', 
+                      color: 'var(--green-800)', 
+                      padding: '10px 16px', 
+                      borderRadius: '9999px', 
+                      fontSize: '0.85rem', 
+                      fontWeight: 600,
+                      textAlign: 'center'
+                    }}
                   >
                     {tag}
                   </span>
@@ -59,20 +66,27 @@ export const Layanan = () => {
             </div>
 
             {/* Brand 2: GhaziSportsHub */}
-            <div style={{ background: 'var(--gray-bg)', borderRadius: '24px', padding: '36px', border: '1px solid var(--gray-border)' }}>
+            <div>
               <span className="section-tag">{servicesData.ghazi.brand}</span>
-              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '14px' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '14px', color: 'var(--black)' }}>
                 {servicesData.ghazi.title}
               </h2>
-              <p style={{ color: 'var(--gray-text)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '24px' }}>
+              <p style={{ color: 'var(--gray-text)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '28px' }}>
                 {servicesData.ghazi.description}
               </p>
-              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', maxWidth: '380px' }}>
                 {servicesData.ghazi.tags.map((tag, idx) => (
                   <span 
                     key={idx} 
-                    className="badge-tag"
-                    style={{ background: '#EAECE9', color: 'var(--black)' }}
+                    style={{ 
+                      background: '#E2E6E2', 
+                      color: 'var(--black)', 
+                      padding: '10px 16px', 
+                      borderRadius: '9999px', 
+                      fontSize: '0.85rem', 
+                      fontWeight: 600,
+                      textAlign: 'center'
+                    }}
                   >
                     {tag}
                   </span>
@@ -84,19 +98,25 @@ export const Layanan = () => {
       </section>
 
       {/* 3. SATU SOLUSI UNTUK SEMUA KEBUTUHAN ANDA (8 Cards Grid) */}
-      <section style={{ padding: '80px 0', background: 'var(--gray-bg)' }}>
+      <section style={{ padding: '80px 0', background: 'var(--white)' }}>
         <div className="container">
-          <div className="text-center">
-            <span className="section-tag">LAYANAN KAMI</span>
-            <h2 className="section-title">Satu Solusi untuk Semua Kebutuhan Anda</h2>
-            <p className="section-subtitle mx-auto">
-              Dari pemasangan rumput sintetis hingga pembangunan lapangan olahraga, kami menghadirkan layanan lengkap.
-            </p>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', alignItems: 'flex-start', marginBottom: '40px' }}>
+            <div>
+              <span className="section-tag">LAYANAN KAMI</span>
+              <h2 className="section-title" style={{ margin: 0 }}>
+                Satu Solusi untuk Semua Kebutuhan Anda
+              </h2>
+            </div>
+            <div>
+              <p className="section-subtitle" style={{ margin: 0, fontSize: '0.95rem', lineHeight: 1.6 }}>
+                Dari pemasangan rumput sintetis hingga pembangunan lapangan olahraga, kami menghadirkan layanan lengkap
+              </p>
+            </div>
           </div>
 
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', 
             gap: '20px', 
             margin: '40px 0' 
           }}>
@@ -105,8 +125,8 @@ export const Layanan = () => {
                 <div className="project-img-wrapper" style={{ height: '180px' }}>
                   <img src={item.image} alt={item.title} loading="lazy" />
                 </div>
-                <div className="project-body" style={{ textAlign: 'center' }}>
-                  <h4 style={{ fontSize: '1rem', fontWeight: 700 }}>{item.title}</h4>
+                <div className="project-body" style={{ textAlign: 'left', padding: '16px' }}>
+                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700 }}>{item.title}</h4>
                 </div>
               </div>
             ))}

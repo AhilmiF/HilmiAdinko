@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { portfolioData } from '../data/siteData';
@@ -8,12 +8,27 @@ import { HeroFloatingBadge } from '../components/FloatingCta';
 export const Portofolio = () => {
   const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = useState('Semua');
+  const [apiProjects, setApiProjects] = useState([]);
+
+  useEffect(() => {
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000';
+    fetch(`${apiBaseUrl}/portfolio`)
+      .then((res) => res.json())
+      .then((resData) => {
+        if (resData && resData.data && resData.data.length > 0) {
+          setApiProjects(resData.data);
+        }
+      })
+      .catch((err) => console.log('Portfolio API:', err));
+  }, []);
 
   const filterTabs = ['Semua', 'Taman', 'Vertical Garden', 'Lapangan Futsal', 'Minisoccer', 'Olahraga Lainnya'];
 
-  const filteredProjects = portfolioData.filter(item => {
+  const projectsToDisplay = apiProjects.length > 0 ? apiProjects : portfolioData;
+
+  const filteredProjects = projectsToDisplay.filter(item => {
     if (activeFilter === 'Semua') return true;
-    return item.category === activeFilter;
+    return (item.category === activeFilter) || (item.kategori === activeFilter);
   });
 
   return (
@@ -33,7 +48,7 @@ export const Portofolio = () => {
               Hasil Pekerjaan Kami
             </h1>
             <p className="hero-subtitle">
-              Kami telah mengerjakan berbagai proyek dengan hasil memuaskan dari skala rumahan hingga komersial besar. Setiap proyek adalah bukti komitmen kami.
+              Kami telah mengerjakan berbagai proyek dengan hasil memuaskan, baik untuk hunian hingga komersial besar. Setiap proyek dirancang dan dipasang rapi.
             </p>
           </div>
         </div>

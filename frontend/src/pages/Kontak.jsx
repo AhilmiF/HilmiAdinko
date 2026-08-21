@@ -1,6 +1,6 @@
 import React from 'react';
-import { MapPin, Phone, MessageCircle, ArrowRight } from 'lucide-react';
-import { InstagramIcon } from '../assets/Icons';
+import { MapPin, Phone, ArrowRight } from 'lucide-react';
+import { InstagramIcon, WhatsAppIcon } from '../assets/Icons';
 import { siteConfig } from '../data/siteData';
 import { ContactForm } from '../components/ContactForm';
 import { HeroFloatingBadge } from '../components/FloatingCta';
@@ -35,7 +35,7 @@ export const Kontak = () => {
                 className="btn-primary-hero"
                 style={{ background: '#25D366' }}
               >
-                <MessageCircle size={20} />
+                <WhatsAppIcon size={20} color="#FFFFFF" />
                 <span>Konsultasi Gratis via WhatsApp</span>
               </button>
             </div>
@@ -67,8 +67,8 @@ export const Kontak = () => {
               </div>
 
               <div className="contact-item">
-                <div className="contact-icon-box">
-                  <Phone size={20} />
+                <div className="contact-icon-box" style={{ background: '#25D366', color: '#FFF' }}>
+                  <WhatsAppIcon size={20} color="#FFFFFF" />
                 </div>
                 <div>
                   <div className="contact-item-title">WhatsApp</div>
