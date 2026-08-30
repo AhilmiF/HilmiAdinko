@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { servicesData } from '../data/siteData';
 import { HeroFloatingBadge } from '../components/FloatingCta';
 
+import { ProjectCard } from '../components/ProjectCard';
+
 export const Layanan = () => {
   const navigate = useNavigate();
+
+  // Read services from localStorage (admin-editable), fallback to static data
+  const [serviceItems] = useState(() => {
+    try {
+      const saved = localStorage.getItem('local_services');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch (e) {}
+    return servicesData.allGrid;
+  });
 
   return (
     <div>
@@ -116,19 +130,12 @@ export const Layanan = () => {
 
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', 
-            gap: '20px', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
+            gap: '24px', 
             margin: '40px 0' 
           }}>
-            {servicesData.allGrid.map((item) => (
-              <div key={item.id} className="project-card">
-                <div className="project-img-wrapper" style={{ height: '180px' }}>
-                  <img src={item.image} alt={item.title} loading="lazy" />
-                </div>
-                <div className="project-body" style={{ textAlign: 'left', padding: '16px' }}>
-                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700 }}>{item.title}</h4>
-                </div>
-              </div>
+            {serviceItems.map((item) => (
+              <ProjectCard key={item.id} project={item} />
             ))}
           </div>
 

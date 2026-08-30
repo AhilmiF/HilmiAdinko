@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { GlobalWhatsAppSticky } from './components/FloatingCta';
@@ -13,34 +13,75 @@ import { Portofolio } from './pages/Portofolio';
 import { Testimoni } from './pages/Testimoni';
 import { Kontak } from './pages/Kontak';
 
+// Admin imports
+import { ProtectedRoute } from './components/ProtectedRoute';
+import { AdminLogin } from './pages/admin/AdminLogin';
+import { AdminDashboard } from './pages/admin/AdminDashboard';
+
+const PublicLayout = ({ children }) => {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
+
+  if (isAdminRoute) {
+    return <>{children}</>;
+  }
+
+  return (
+    <div className="app-container">
+      {/* Floating Capsule Header */}
+      <Navbar />
+
+      {/* Page Content */}
+      <main className="public-main-content">
+        {children}
+      </main>
+
+      {/* Global Floating Sticky WhatsApp button */}
+      <GlobalWhatsAppSticky />
+
+      {/* Global Dark Green Footer */}
+      <Footer />
+    </div>
+  );
+};
+
 export const App = () => {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="app-container" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-        {/* Floating Capsule Header */}
-        <Navbar />
+      <PublicLayout>
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/tentang-adinko" element={<AboutAdinko />} />
+          <Route path="/tentang-ghazi" element={<AboutGhazi />} />
+          <Route path="/layanan" element={<Layanan />} />
+          <Route path="/portofolio" element={<Portofolio />} />
+          <Route path="/testimoni" element={<Testimoni />} />
+          <Route path="/kontak" element={<Kontak />} />
 
-        {/* Page Content */}
-        <main style={{ flex: 1 }}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/tentang-adinko" element={<AboutAdinko />} />
-            <Route path="/tentang-ghazi" element={<AboutGhazi />} />
-            <Route path="/layanan" element={<Layanan />} />
-            <Route path="/portofolio" element={<Portofolio />} />
-            <Route path="/testimoni" element={<Testimoni />} />
-            <Route path="/kontak" element={<Kontak />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </main>
+          {/* Admin Dedicated Routes (URL-only) */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/*"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
 
-        {/* Global Floating Sticky WhatsApp button */}
-        <GlobalWhatsAppSticky />
-
-        {/* Global Dark Green Footer */}
-        <Footer />
-      </div>
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </PublicLayout>
     </BrowserRouter>
   );
 };

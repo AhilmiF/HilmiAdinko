@@ -94,59 +94,75 @@ export const Navbar = () => {
         </button>
       </nav>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Menu Backdrop & Drawer */}
       {mobileMenuOpen && (
-        <div style={{
-          position: 'fixed',
-          top: '80px',
-          left: '16px',
-          right: '16px',
-          background: '#FFFFFF',
-          borderRadius: '18px',
-          boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
-          padding: '24px',
-          zIndex: 999,
-          pointerEvents: 'auto',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '12px'
-        }}>
-          <Link to="/" className="dropdown-item" style={{ fontSize: '1rem', fontWeight: 600 }}>
-            Beranda
-          </Link>
-          <div style={{ padding: '4px 14px', fontSize: '0.85rem', color: '#888888', fontWeight: 700 }}>
-            TENTANG KAMI
+        <>
+          <div 
+            style={{
+              position: 'fixed',
+              inset: 0,
+              background: 'rgba(0, 0, 0, 0.4)',
+              backdropFilter: 'blur(4px)',
+              WebkitBackdropFilter: 'blur(4px)',
+              zIndex: 998,
+              pointerEvents: 'auto'
+            }}
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          <div style={{
+            position: 'fixed',
+            top: '75px',
+            left: '16px',
+            right: '16px',
+            maxHeight: 'calc(100vh - 90px)',
+            overflowY: 'auto',
+            background: '#FFFFFF',
+            borderRadius: '18px',
+            boxShadow: '0 20px 40px rgba(0,0,0,0.2)',
+            padding: '24px',
+            zIndex: 999,
+            pointerEvents: 'auto',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '12px'
+          }}>
+            <Link to="/" className="dropdown-item" style={{ fontSize: '1rem', fontWeight: 600 }}>
+              Beranda
+            </Link>
+            <div style={{ padding: '4px 14px', fontSize: '0.85rem', color: '#888888', fontWeight: 700 }}>
+              TENTANG KAMI
+            </div>
+            <Link to="/tentang-adinko" className="dropdown-item" style={{ paddingLeft: '24px' }}>
+              🌱 Tentang Adinko (Rumput Sintetis)
+            </Link>
+            <Link to="/tentang-ghazi" className="dropdown-item" style={{ paddingLeft: '24px' }}>
+              ⚽ Tentang GhaziSportsHub (Lapangan Olahraga)
+            </Link>
+            <hr style={{ border: '0', borderTop: '1px solid #EEE', margin: '4px 0' }} />
+            <Link to="/layanan" className="dropdown-item" style={{ fontSize: '1rem', fontWeight: 600 }}>
+              Layanan
+            </Link>
+            <Link to="/portofolio" className="dropdown-item" style={{ fontSize: '1rem', fontWeight: 600 }}>
+              Portofolio
+            </Link>
+            <Link to="/testimoni" className="dropdown-item" style={{ fontSize: '1rem', fontWeight: 600 }}>
+              Testimoni
+            </Link>
+            <Link to="/kontak" className="dropdown-item" style={{ fontSize: '1rem', fontWeight: 600 }}>
+              Kontak
+            </Link>
+            <button 
+              onClick={() => { setMobileMenuOpen(false); navigate('/kontak'); }} 
+              className="btn-nav-cta" 
+              style={{ width: '100%', justifyContent: 'center', marginTop: '12px' }}
+            >
+              <span>Konsultasi Sekarang</span>
+              <span className="arrow-circle">
+                <ArrowRight size={14} />
+              </span>
+            </button>
           </div>
-          <Link to="/tentang-adinko" className="dropdown-item" style={{ paddingLeft: '24px' }}>
-            🌱 Tentang Adinko (Rumput Sintetis)
-          </Link>
-          <Link to="/tentang-ghazi" className="dropdown-item" style={{ paddingLeft: '24px' }}>
-            ⚽ Tentang GhaziSportsHub (Lapangan Olahraga)
-          </Link>
-          <hr style={{ border: '0', borderTop: '1px solid #EEE', margin: '4px 0' }} />
-          <Link to="/layanan" className="dropdown-item" style={{ fontSize: '1rem', fontWeight: 600 }}>
-            Layanan
-          </Link>
-          <Link to="/portofolio" className="dropdown-item" style={{ fontSize: '1rem', fontWeight: 600 }}>
-            Portofolio
-          </Link>
-          <Link to="/testimoni" className="dropdown-item" style={{ fontSize: '1rem', fontWeight: 600 }}>
-            Testimoni
-          </Link>
-          <Link to="/kontak" className="dropdown-item" style={{ fontSize: '1rem', fontWeight: 600 }}>
-            Kontak
-          </Link>
-          <button 
-            onClick={() => navigate('/kontak')} 
-            className="btn-nav-cta" 
-            style={{ width: '100%', justifyContent: 'center', marginTop: '12px' }}
-          >
-            <span>Konsultasi Sekarang</span>
-            <span className="arrow-circle">
-              <ArrowRight size={14} />
-            </span>
-          </button>
-        </div>
+        </>
       )}
     </header>
   );

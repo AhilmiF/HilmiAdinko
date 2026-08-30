@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Star, MapPin, Phone, CheckCircle2, ChevronRight, Navigation } from 'lucide-react';
+import { ArrowRight, Star, MapPin, Phone, ExternalLink } from 'lucide-react';
 import { InstagramIcon } from '../assets/Icons';
 import { siteConfig, portfolioData, testimonialsData } from '../data/siteData';
 import { FeatureCards } from '../components/FeatureCards';
@@ -251,7 +251,7 @@ export const Home = () => {
 
             {/* Google Review Pill Button */}
             <button 
-              onClick={() => window.open(siteConfig.contacts.mapsUrl, '_blank')}
+              onClick={() => window.open(siteConfig.contacts.mapsReviewUrl || siteConfig.contacts.mapsUrl, '_blank')}
               style={{ 
                 background: '#FFFFFF', 
                 color: '#121212',
@@ -262,7 +262,8 @@ export const Home = () => {
                 gap: '8px',
                 fontWeight: 700,
                 fontSize: '0.85rem',
-                boxShadow: '0 4px 14px rgba(0,0,0,0.15)'
+                boxShadow: '0 4px 14px rgba(0,0,0,0.15)',
+                cursor: 'pointer'
               }}
             >
               <span>Review us on Google</span>
@@ -350,11 +351,19 @@ export const Home = () => {
                 </div>
               </div>
 
-              {/* Google Maps Interactive Container */}
-              <div className="map-embed-wrapper">
+              {/* Google Maps Interactive Container (Opens Review / Place in new tab) */}
+              <div 
+                className="map-embed-wrapper"
+                onClick={() => window.open(siteConfig.contacts.mapsReviewUrl || siteConfig.contacts.mapsUrl, '_blank')}
+                title="Klik untuk membuka ulasan Google Maps Adinko Pekanbaru"
+              >
+                <div className="map-overlay-badge">
+                  <span>Maps</span>
+                  <ExternalLink size={13} />
+                </div>
                 <iframe
                   title="Google Maps Location Adinko"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15958.826554559868!2d101.442!3d0.485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5a92a543e371b%3A0x6b405553e1a0b!2sTangkerang%20Barat%2C%20Pekanbaru!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid"
+                  src={siteConfig.contacts.mapsEmbedUrl}
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

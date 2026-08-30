@@ -17,11 +17,61 @@ export const ContactForm = ({ title = "Kirim Pesan Sekarang" }) => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const getCategoryId = (kebutuhanName) => {
+    const map = {
+      'Instalasi jaring': 1,
+      'Rumput Sintetis Taman': 2,
+      'Vertical Garden': 3,
+      'Lapangan Futsal': 4,
+      'Mini Soccer': 5,
+      'Mini Golf': 6,
+      'Padel & Tenis': 6,
+      'Lainnya': 6
+    };
+    return map[kebutuhanName] || 1;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Prepare message for WhatsApp
-    const message = `Halo Adinko & GhaziSportsHub,%0A%0A*Konsultasi Proyek Baru*%0A- *Nama:* ${encodeURIComponent(formData.nama)}%0A- *No. WhatsApp:* ${encodeURIComponent(formData.whatsapp)}%0A- *Lokasi Proyek:* ${encodeURIComponent(formData.lokasi)}%0A- *Kebutuhan Layanan:* ${encodeURIComponent(formData.kebutuhan)}%0A- *Keterangan:* ${encodeURIComponent(formData.keterangan || '-')}%0A%0AMohon info estimasi dan penjadwalan survei. Terima kasih.`;
+    const categoryId = getCategoryId(formData.kebutuhan);
+    
+    // Create new contact object
+    const newContact = {
+      id: Date.now(),
+      nama_lengkap: formData.nama.trim(),
+      no_whatsapp: formData.whatsapp.trim(),
+      lokasi: formData.lokasi.trim(),
+      kategori: categoryId,
+      kategori_layanan: formData.kebutuhan,
+      keterangan: formData.keterangan.trim(),
+      created_at: new Date().toISOString().split('T')[0]
+    };
+
+    // Save to local storage for instant Admin sync
+    try {
+      const existingStr = localStorage.getItem('local_contacts');
+      const existing = existingStr ? JSON.parse(existingStr) : [];
+      const updated = [newContact, ...existing];
+      localStorage.setItem('local_contacts', JSON.stringify(updated));
+    } catch (e) {
+      console.warn('LocalStorage save error:', e);
+    }
+
+    // Prepare structured message for WhatsApp
+    const rawMessage = `Halo Adinko & GhaziSportsHub,
+
+Saya ingin konsultasi proyek dengan detail berikut:
+• Nama Lengkap: ${formData.nama.trim()}
+• No. WhatsApp: ${formData.whatsapp.trim()}
+• Lokasi Proyek: ${formData.lokasi.trim()}
+• Kebutuhan Layanan: ${formData.kebutuhan}
+• Keterangan Tambahan: ${formData.keterangan.trim() || '-'}
+
+Mohon informasinya Terima kasih!`;
+
+    const cleanWaNumber = (siteConfig.contacts.directWaNumber || '').replace(/[^0-9]/g, '');
+    const waUrl = `https://wa.me/${cleanWaNumber}?text=${encodeURIComponent(rawMessage)}`;
     
     try {
       const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000';
@@ -29,11 +79,11 @@ export const ContactForm = ({ title = "Kirim Pesan Sekarang" }) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          nama_lengkap: formData.nama,
-          no_whatsapp: formData.whatsapp,
-          lokasi: formData.lokasi,
-          keterangan: formData.keterangan,
-          kategori: 1
+          nama_lengkap: formData.nama.trim(),
+          no_whatsapp: formData.whatsapp.trim(),
+          lokasi: formData.lokasi.trim(),
+          keterangan: formData.keterangan.trim(),
+          kategori: categoryId
         })
       });
     } catch (err) {
@@ -42,9 +92,9 @@ export const ContactForm = ({ title = "Kirim Pesan Sekarang" }) => {
 
     setSubmitted(true);
     
-    // Open WhatsApp after small feedback delay
+    // Open WhatsApp with full form details in chat message
     setTimeout(() => {
-      window.open(`https://wa.me/${siteConfig.contacts.directWaNumber}?text=${message}`, '_blank');
+      window.open(waUrl, '_blank');
     }, 400);
   };
 

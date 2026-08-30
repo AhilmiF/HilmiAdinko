@@ -9,9 +9,20 @@ export const Testimoni = () => {
   const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = useState('Semua');
 
+  const [reviewsList] = useState(() => {
+    try {
+      const saved = localStorage.getItem('local_testimonials');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch (e) {}
+    return testimonialsData;
+  });
+
   const filterTabs = ['Semua', 'Rumput Sintetis', 'Lapangan Olahraga', 'Vertical Garden'];
 
-  const filteredReviews = testimonialsData.filter(item => {
+  const filteredReviews = reviewsList.filter(item => {
     if (activeFilter === 'Semua') return true;
     return item.category === activeFilter;
   });

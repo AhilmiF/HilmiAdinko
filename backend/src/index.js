@@ -21,6 +21,8 @@ const kategoriRoute = require('./routes/kategoriRoute');
 const testimoniRoute = require('./routes/testimoniRoute');
 
 
+const adminRoute = require('./routes/adminRoute');
+
 const app = express();
 
 // Middleware CORS
@@ -37,6 +39,7 @@ app.use(express.json());
 
 // Routing
 
+app.use('/admin', adminRoute);
 app.use('/home', homeRoutes);
 app.use('/about', aboutRoutes);
 app.use('/layanan', layananRoutes);
@@ -51,8 +54,14 @@ app.use('/testimoniRoute', testimoniRoute);
 
 // Routing upload file
 app.post('/upload', upload.single('pictures'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ message: 'No file uploaded' });
+    }
+    const fileUrl = `/assets/${req.file.filename}`;
     res.status(201).json({
-        message: 'File has been uploaded'
+        message: 'File has been uploaded',
+        image_url: fileUrl,
+        filename: req.file.filename
     });
 });
 

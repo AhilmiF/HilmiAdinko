@@ -1,5 +1,4 @@
-import React from 'react';
-import { MapPin, Phone, ArrowRight } from 'lucide-react';
+import { MapPin, Phone, ArrowRight, ExternalLink } from 'lucide-react';
 import { InstagramIcon, WhatsAppIcon } from '../assets/Icons';
 import { siteConfig } from '../data/siteData';
 import { ContactForm } from '../components/ContactForm';
@@ -8,6 +7,10 @@ import { HeroFloatingBadge } from '../components/FloatingCta';
 export const Kontak = () => {
   const handleWaHeroClick = () => {
     window.open(`https://wa.me/${siteConfig.contacts.directWaNumber}?text=Halo%20Adinko%20%26%20GhaziSportsHub,%20saya%20ingin%20konsultasi%20langsung`, '_blank');
+  };
+
+  const handleOpenMapsReview = () => {
+    window.open(siteConfig.contacts.mapsReviewUrl || siteConfig.contacts.mapsUrl, '_blank');
   };
 
   return (
@@ -94,10 +97,19 @@ export const Kontak = () => {
               </div>
 
               {/* Google Maps Interactive Container */}
-              <div className="map-embed-wrapper">
+              {/* Google Maps Interactive Container (Opens Review / Place in new tab) */}
+              <div 
+                className="map-embed-wrapper" 
+                onClick={handleOpenMapsReview}
+                title="Klik untuk membuka ulasan Google Maps Adinko Pekanbaru"
+              >
+                <div className="map-overlay-badge">
+                  <span>Maps</span>
+                  <ExternalLink size={13} />
+                </div>
                 <iframe
                   title="Google Maps Location Adinko"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15958.826554559868!2d101.442!3d0.485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5a92a543e371b%3A0x6b405553e1a0b!2sTangkerang%20Barat%2C%20Pekanbaru!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid"
+                  src={siteConfig.contacts.mapsEmbedUrl}
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
