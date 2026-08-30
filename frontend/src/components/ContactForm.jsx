@@ -74,7 +74,7 @@ Mohon informasinya Terima kasih!`;
     const waUrl = `https://wa.me/${cleanWaNumber}?text=${encodeURIComponent(rawMessage)}`;
     
     try {
-      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000';
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'https://hilmiadinko-production.up.railway.app';
       await fetch(`${apiBaseUrl}/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

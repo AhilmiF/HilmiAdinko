@@ -103,7 +103,7 @@ export const AdminDashboard = () => {
     kategori_layanan: ''
   });
 
-  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000';
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'https://hilmiadinko-production.up.railway.app';
 
   const showToast = (message, type = 'success') => {
     setToast({ show: true, message, type });

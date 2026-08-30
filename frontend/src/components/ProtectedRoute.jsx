@@ -14,7 +14,7 @@ export const ProtectedRoute = ({ children }) => {
       return;
     }
 
-    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000';
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'https://hilmiadinko-production.up.railway.app';
     
     fetch(`${apiBaseUrl}/admin/verify`, {
       method: 'GET',
