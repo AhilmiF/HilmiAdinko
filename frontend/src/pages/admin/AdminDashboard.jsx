@@ -5,7 +5,6 @@ import {
   Briefcase,
   Star,
   MessageSquare,
-  FolderTree,
   Layers,
   Plus,
   Edit2,
@@ -67,7 +66,7 @@ export const AdminDashboard = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   // Modal State for CRUD
-  const [modalType, setModalType] = useState(null); // 'portfolio', 'kategori', 'layanan'
+  const [modalType, setModalType] = useState(null); // 'portfolio', 'layanan'
   const [editingItem, setEditingItem] = useState(null);
 
   // Form states
@@ -93,9 +92,7 @@ export const AdminDashboard = () => {
 
 
 
-  const [kategoriForm, setKategoriForm] = useState({
-    kategori_layanan: ''
-  });
+
 
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'https://hilmiadinko-production.up.railway.app';
 
@@ -372,21 +369,7 @@ export const AdminDashboard = () => {
     showToast('Pesan konsultasi berhasil dihapus.');
   };
 
-  // Kategori Save
-  const handleSaveKategori = async (e) => {
-    e.preventDefault();
-    if (!kategoriForm.kategori_layanan.trim()) return;
 
-    const newItem = {
-      id: Date.now(),
-      name: kategoriForm.kategori_layanan,
-      kategori_layanan: kategoriForm.kategori_layanan
-    };
-
-    setCategories(prev => [...prev, newItem]);
-    showToast('Kategori layanan baru ditambahkan!');
-    closeModal();
-  };
 
   // CRUD Operations - Layanan (Services)
   const handleSaveService = (e) => {
@@ -477,9 +460,6 @@ export const AdminDashboard = () => {
         image: defaultSvcImg,
         images: [defaultSvcImg]
       });
-
-    } else if (type === 'kategori') {
-      setKategoriForm({ kategori_layanan: '' });
     }
   };
 
@@ -656,13 +636,7 @@ export const AdminDashboard = () => {
             <span>Kelola Layanan</span>
           </button>
 
-          <button
-            className={`admin-nav-item ${activeTab === 'kategori' ? 'active' : ''}`}
-            onClick={() => { setActiveTab('kategori'); setMobileMenuOpen(false); }}
-          >
-            <FolderTree size={18} />
-            <span>Kategori Layanan</span>
-          </button>
+
         </aside>
 
         {/* Body Content */}
@@ -703,15 +677,7 @@ export const AdminDashboard = () => {
                   </div>
                 </div>
 
-                <div className="admin-stat-card">
-                  <div className="admin-stat-icon" style={{ background: 'rgba(66, 153, 225, 0.2)', color: '#4299E1' }}>
-                    <FolderTree size={26} />
-                  </div>
-                  <div>
-                    <div className="admin-stat-val">{categories.length}</div>
-                    <div className="admin-stat-lbl">Kategori Layanan Aktif</div>
-                  </div>
-                </div>
+
               </div>
 
               {/* Recent Inquiry Messages Preview */}
@@ -986,47 +952,7 @@ export const AdminDashboard = () => {
             </div>
           )}
 
-          {/* TAB 6: KATEGORI */}
-          {activeTab === 'kategori' && (
-            <div>
-              <div className="admin-page-header">
-                <div>
-                  <h1 className="admin-page-title">Kelola Kategori Layanan</h1>
-                  <p className="admin-page-sub">Kategori yang digunakan untuk filter Portofolio dan Pilihan Formulir.</p>
-                </div>
 
-                <button onClick={() => openAddModal('kategori')} className="admin-btn-primary">
-                  <Plus size={16} />
-                  <span>Tambah Kategori</span>
-                </button>
-              </div>
-
-              <div className="admin-card">
-                <div className="admin-table-wrapper">
-                  <table className="admin-table">
-                    <thead>
-                      <tr>
-                        <th>ID</th>
-                        <th>Nama Kategori Layanan</th>
-                        <th>Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {categories.map((item) => (
-                        <tr key={item.id}>
-                          <td>#{item.id}</td>
-                          <td style={{ fontWeight: '700' }}>{item.kategori_layanan || item.name}</td>
-                          <td>
-                            <span className="admin-badge">Aktif</span>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          )}
         </main>
       </div>
 
@@ -1039,8 +965,6 @@ export const AdminDashboard = () => {
                 {editingItem ? 'Edit ' : 'Tambah '}
                 {modalType === 'portfolio' && 'Portofolio'}
                 {modalType === 'layanan' && 'Layanan'}
-                {modalType === 'testimoni' && 'Testimoni'}
-                {modalType === 'kategori' && 'Kategori Layanan'}
               </h3>
               <button onClick={closeModal} className="admin-btn-icon">
                 <X size={18} />
@@ -1387,33 +1311,6 @@ export const AdminDashboard = () => {
                   </button>
                   <button type="submit" className="admin-btn-primary">
                     Simpan Layanan
-                  </button>
-                </div>
-              </form>
-            )}
-
-            {/* FORM KATEGORI */}
-            {modalType === 'kategori' && (
-              <form onSubmit={handleSaveKategori}>
-                <div className="admin-form-group">
-                  <label className="admin-form-label">Nama Kategori Layanan</label>
-                  <input
-                    type="text"
-                    required
-                    className="admin-input"
-                    style={{ paddingLeft: '14px' }}
-                    placeholder="Contoh: Mini Golf & Padel"
-                    value={kategoriForm.kategori_layanan}
-                    onChange={(e) => setKategoriForm({ ...kategoriForm, kategori_layanan: e.target.value })}
-                  />
-                </div>
-
-                <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '12px', marginTop: '24px' }}>
-                  <button type="button" onClick={closeModal} className="admin-btn-icon">
-                    Batal
-                  </button>
-                  <button type="submit" className="admin-btn-primary">
-                    Simpan Kategori
                   </button>
                 </div>
               </form>
