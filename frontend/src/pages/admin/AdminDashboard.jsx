@@ -39,7 +39,6 @@ export const AdminDashboard = () => {
   const [portfolios, setPortfolios] = useState([]);
   const [testimonials, setTestimonials] = useState([]);
   const [contacts, setContacts] = useState([]);
-  const [syncingGmaps, setSyncingGmaps] = useState(false);
   const [categories, setCategories] = useState([
     { id: 1, name: 'Taman Rumah' },
     { id: 2, name: 'Dekorasi Indoor & Outdoor' },
@@ -450,25 +449,7 @@ export const AdminDashboard = () => {
     showToast('Testimoni berhasil dihapus.');
   };
 
-  const handleSyncGmapsTestimoni = async () => {
-    setSyncingGmaps(true);
-    try {
-      const res = await fetch(`${apiBaseUrl}/testimoniRoute/sync-gmaps`, {
-        method: 'POST'
-      });
-      const data = await res.json();
-      if (data.success && data.data && data.data.length > 0) {
-        setTestimonials(prev => [...data.data, ...prev]);
-        showToast(data.message || 'Berhasil sinkronisasi ulasan Google Maps!');
-      } else {
-        showToast(data.message || 'Tidak ada ulasan baru dari Google Maps (pastikan API Key terpasang).', 'danger');
-      }
-    } catch (err) {
-      showToast('Gagal menghubungi server untuk sync Google Maps.', 'danger');
-    } finally {
-      setSyncingGmaps(false);
-    }
-  };
+
 
 
 
@@ -1094,22 +1075,10 @@ export const AdminDashboard = () => {
                   <p className="admin-page-sub">Kelola ulasan dan kepuasan pelanggan dari Google Maps atau manual.</p>
                 </div>
 
-                <div style={{ display: 'flex', gap: '10px' }}>
-                  <button 
-                    onClick={handleSyncGmapsTestimoni} 
-                    disabled={syncingGmaps}
-                    className="admin-btn-icon"
-                    style={{ background: 'rgba(66, 153, 225, 0.2)', color: '#63B3ED', border: '1px solid rgba(99, 179, 237, 0.4)' }}
-                  >
-                    <Sparkles size={16} />
-                    <span>{syncingGmaps ? 'Proses Sync...' : 'Sync Review Google Maps'}</span>
-                  </button>
-
-                  <button onClick={() => openAddModal('testimoni')} className="admin-btn-primary">
-                    <Plus size={16} />
-                    <span>Tambah Testimoni</span>
-                  </button>
-                </div>
+                <button onClick={() => openAddModal('testimoni')} className="admin-btn-primary">
+                  <Plus size={16} />
+                  <span>Tambah Testimoni Baru</span>
+                </button>
               </div>
 
               <div className="admin-card">
