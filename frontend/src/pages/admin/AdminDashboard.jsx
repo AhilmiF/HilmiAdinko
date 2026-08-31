@@ -23,7 +23,7 @@ import {
   MapPin,
   Menu
 } from 'lucide-react';
-import { portfolioData, testimonialsData, siteConfig, servicesData } from '../../data/siteData';
+import { portfolioData, siteConfig, servicesData } from '../../data/siteData';
 import { AdinkoLogo } from '../../assets/Logos';
 import { WhatsAppIcon } from '../../assets/Icons';
 import './AdminStyles.css';
@@ -38,7 +38,6 @@ export const AdminDashboard = () => {
 
   // Data states
   const [portfolios, setPortfolios] = useState([]);
-  const [testimonials, setTestimonials] = useState([]);
   const [contacts, setContacts] = useState([]);
   const [categories, setCategories] = useState([
     { id: 1, name: 'Taman Rumah' },
@@ -68,7 +67,7 @@ export const AdminDashboard = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   // Modal State for CRUD
-  const [modalType, setModalType] = useState(null); // 'portfolio', 'testimoni', 'kategori', 'layanan'
+  const [modalType, setModalType] = useState(null); // 'portfolio', 'kategori', 'layanan'
   const [editingItem, setEditingItem] = useState(null);
 
   // Form states
@@ -92,12 +91,7 @@ export const AdminDashboard = () => {
     images: []
   });
 
-  const [testimoniForm, setTestimoniForm] = useState({
-    nama_klien: '',
-    waktu: 'Terbaru',
-    rating: 5,
-    deskripsi: ''
-  });
+
 
   const [kategoriForm, setKategoriForm] = useState({
     kategori_layanan: ''
@@ -137,18 +131,7 @@ export const AdminDashboard = () => {
       setPortfolios(portfolioData);
     }
 
-    // 2. Fetch Testimonials
-    try {
-      const tRes = await fetch(`${apiBaseUrl}/testimoniRoute`);
-      const tData = await tRes.json();
-      if (tData && tData.data && tData.data.length > 0) {
-        setTestimonials(tData.data);
-      } else {
-        setTestimonials(testimonialsData);
-      }
-    } catch (err) {
-      setTestimonials(testimonialsData);
-    }
+
 
     // 3. Fetch Contacts (Inquiries) with Local Storage Sync
     let apiContacts = [];
@@ -371,64 +354,7 @@ export const AdminDashboard = () => {
     showToast('Portofolio berhasil dihapus.');
   };
 
-  // CRUD Operations - Testimoni
-  const handleSaveTestimoni = async (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem('adminToken');
 
-    if (editingItem) {
-      try {
-        await fetch(`${apiBaseUrl}/testimoniRoute/${editingItem.id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
-          body: JSON.stringify(testimoniForm)
-        });
-      } catch (err) {}
-
-      setTestimonials(prev =>
-        prev.map(item => item.id === editingItem.id ? { ...item, ...testimoniForm } : item)
-      );
-      showToast('Testimoni berhasil diperbarui!');
-    } else {
-      const newItem = {
-        id: Date.now(),
-        ...testimoniForm
-      };
-      try {
-        await fetch(`${apiBaseUrl}/testimoniRoute`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
-          body: JSON.stringify(testimoniForm)
-        });
-      } catch (err) {}
-
-      setTestimonials(prev => [newItem, ...prev]);
-      showToast('Testimoni baru berhasil ditambahkan!');
-    }
-
-    closeModal();
-  };
-
-  const handleDeleteTestimoni = async (id) => {
-    if (!window.confirm('Apakah Anda yakin ingin menghapus testimoni ini?')) return;
-    const token = localStorage.getItem('adminToken');
-
-    try {
-      await fetch(`${apiBaseUrl}/testimoniRoute/${id}`, {
-        method: 'DELETE',
-        headers: { 'Authorization': `Bearer ${token}` }
-      });
-    } catch (err) {}
-
-    setTestimonials(prev => prev.filter(item => item.id !== id));
-    showToast('Testimoni berhasil dihapus.');
-  };
 
   // Contact Delete
   const handleDeleteContact = async (id) => {
@@ -551,13 +477,7 @@ export const AdminDashboard = () => {
         image: defaultSvcImg,
         images: [defaultSvcImg]
       });
-    } else if (type === 'testimoni') {
-      setTestimoniForm({
-        nama_klien: '',
-        waktu: 'Terbaru',
-        rating: 5,
-        deskripsi: ''
-      });
+
     } else if (type === 'kategori') {
       setKategoriForm({ kategori_layanan: '' });
     }
@@ -594,13 +514,7 @@ export const AdminDashboard = () => {
         image: existingImages[0] || item.image || '',
         images: existingImages
       });
-    } else if (type === 'testimoni') {
-      setTestimoniForm({
-        nama_klien: item.nama_klien || item.name || '',
-        waktu: item.waktu || item.date || 'Terbaru',
-        rating: item.rating || 5,
-        deskripsi: item.deskripsi || item.text || ''
-      });
+
     }
   };
 
@@ -711,13 +625,7 @@ export const AdminDashboard = () => {
             <span>Kelola Portofolio</span>
           </button>
 
-          <button
-            className={`admin-nav-item ${activeTab === 'testimoni' ? 'active' : ''}`}
-            onClick={() => { setActiveTab('testimoni'); setMobileMenuOpen(false); }}
-          >
-            <Star size={18} />
-            <span>Kelola Testimoni</span>
-          </button>
+
 
           <button
             className={`admin-nav-item ${activeTab === 'contact' ? 'active' : ''}`}
@@ -783,15 +691,7 @@ export const AdminDashboard = () => {
                   </div>
                 </div>
 
-                <div className="admin-stat-card">
-                  <div className="admin-stat-icon" style={{ background: 'rgba(237, 137, 54, 0.2)', color: '#ED8936' }}>
-                    <Star size={26} />
-                  </div>
-                  <div>
-                    <div className="admin-stat-val">{testimonials.length}</div>
-                    <div className="admin-stat-lbl">Total Testimoni Klien</div>
-                  </div>
-                </div>
+
 
                 <div className="admin-stat-card">
                   <div className="admin-stat-icon" style={{ background: 'rgba(37, 211, 102, 0.2)', color: '#25D366' }}>
@@ -940,72 +840,7 @@ export const AdminDashboard = () => {
             </div>
           )}
 
-          {/* TAB 3: TESTIMONI */}
-          {activeTab === 'testimoni' && (
-            <div>
-              <div className="admin-page-header">
-                <div>
-                  <h1 className="admin-page-title">Kelola Testimoni Klien</h1>
-                  <p className="admin-page-sub">Kelola ulasan dan kepuasan pelanggan yang ditampilkan di halaman utama.</p>
-                </div>
 
-                <button onClick={() => openAddModal('testimoni')} className="admin-btn-primary">
-                  <Plus size={16} />
-                  <span>Tambah Testimoni Baru</span>
-                </button>
-              </div>
-
-              <div className="admin-card">
-                <div className="admin-table-wrapper">
-                  <table className="admin-table">
-                    <thead>
-                      <tr>
-                        <th>Nama Klien</th>
-                        <th>Rating</th>
-                        <th>Waktu / Tanggal</th>
-                        <th>Isi Ulasan</th>
-                        <th>Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {testimonials.map((item) => (
-                        <tr key={item.id}>
-                          <td style={{ fontWeight: '700' }}>{item.nama_klien || item.name}</td>
-                          <td>
-                            <div style={{ color: '#F6AD55', display: 'flex', gap: '2px' }}>
-                              {Array.from({ length: item.rating || 5 }).map((_, i) => (
-                                <Star key={i} size={14} fill="#F6AD55" />
-                              ))}
-                            </div>
-                          </td>
-                          <td>{item.waktu || item.date || 'Terbaru'}</td>
-                          <td style={{ maxWidth: '300px', fontSize: '0.85rem', color: '#A0AEC0' }}>
-                            "{item.deskripsi || item.text}"
-                          </td>
-                          <td>
-                            <div style={{ display: 'flex', gap: '8px' }}>
-                              <button
-                                className="admin-btn-icon"
-                                onClick={() => openEditModal('testimoni', item)}
-                              >
-                                <Edit2 size={14} />
-                              </button>
-                              <button
-                                className="admin-btn-danger"
-                                onClick={() => handleDeleteTestimoni(item.id)}
-                              >
-                                <Trash2 size={14} />
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          )}
 
           {/* TAB 4: PESAN & KONSULTASI */}
           {activeTab === 'contact' && (
@@ -1380,70 +1215,7 @@ export const AdminDashboard = () => {
               </form>
             )}
 
-            {/* FORM TESTIMONI */}
-            {modalType === 'testimoni' && (
-              <form onSubmit={handleSaveTestimoni}>
-                <div className="admin-form-group">
-                  <label className="admin-form-label">Nama Klien</label>
-                  <input
-                    type="text"
-                    required
-                    className="admin-input"
-                    style={{ paddingLeft: '14px' }}
-                    placeholder="Contoh: Bpk. Budi Santoso"
-                    value={testimoniForm.nama_klien}
-                    onChange={(e) => setTestimoniForm({ ...testimoniForm, nama_klien: e.target.value })}
-                  />
-                </div>
 
-                <div className="admin-form-group">
-                  <label className="admin-form-label">Rating (1-5 ⭐)</label>
-                  <input
-                    type="number"
-                    min={1}
-                    max={5}
-                    className="admin-input"
-                    style={{ paddingLeft: '14px' }}
-                    value={testimoniForm.rating}
-                    onChange={(e) => setTestimoniForm({ ...testimoniForm, rating: parseInt(e.target.value) })}
-                  />
-                </div>
-
-                <div className="admin-form-group">
-                  <label className="admin-form-label">Waktu / Bulan</label>
-                  <input
-                    type="text"
-                    className="admin-input"
-                    style={{ paddingLeft: '14px' }}
-                    placeholder="Contoh: Agustus 2026"
-                    value={testimoniForm.waktu}
-                    onChange={(e) => setTestimoniForm({ ...testimoniForm, waktu: e.target.value })}
-                  />
-                </div>
-
-                <div className="admin-form-group">
-                  <label className="admin-form-label">Isi Ulasan Testimoni</label>
-                  <textarea
-                    rows={4}
-                    required
-                    className="admin-input"
-                    style={{ paddingLeft: '14px' }}
-                    placeholder="Hasil kerja rapi dan tepat waktu..."
-                    value={testimoniForm.deskripsi}
-                    onChange={(e) => setTestimoniForm({ ...testimoniForm, deskripsi: e.target.value })}
-                  />
-                </div>
-
-                <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '12px', marginTop: '24px' }}>
-                  <button type="button" onClick={closeModal} className="admin-btn-icon">
-                    Batal
-                  </button>
-                  <button type="submit" className="admin-btn-primary">
-                    Simpan Testimoni
-                  </button>
-                </div>
-              </form>
-            )}
 
             {/* FORM LAYANAN */}
             {modalType === 'layanan' && (
