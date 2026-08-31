@@ -6,12 +6,14 @@ const {
     getAllTestimoni, 
     createNewTestimoni, 
     updateTestimoni, 
-    deleteTestimoni 
+    deleteTestimoni,
+    syncGmapsReviews
 } = require('../controller/testimoni');
 
 router.get('/', getAllTestimoni);
 
 router.post('/', createNewTestimoni);
+router.post('/sync-gmaps', syncGmapsReviews);
 
 router.put('/:id', updateTestimoni);
 

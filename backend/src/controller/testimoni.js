@@ -85,6 +85,59 @@ const deleteTestimoni = async (req, res) => {
             message: 'Server Error',
             serverMessage: error
         });
+        });
+    }
+};
+
+// SYNC GOOGLE MAPS REVIEWS
+const syncGmapsReviews = async (req, res) => {
+    const apiKey = process.env.GOOGLE_PLACES_API_KEY;
+    const placeId = process.env.GOOGLE_PLACE_ID;
+
+    if (!apiKey || !placeId) {
+        return res.status(200).json({
+            success: false,
+            message: 'Google Places API Key atau Place ID belum dikonfigurasi di Environment Variables (.env).'
+        });
+    }
+
+    try {
+        const fetchFn = globalThis.fetch || (await import('node-fetch')).default;
+        const gmapsUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=reviews,rating,user_ratings_total&key=${apiKey}`;
+        const response = await fetchFn(gmapsUrl);
+        const data = await response.json();
+
+        if (data.status !== 'OK' || !data.result || !data.result.reviews) {
+            return res.status(400).json({
+                success: false,
+                message: data.error_message || 'Gagal mengambil ulasan dari Google Maps Place Details API.'
+            });
+        }
+
+        const reviews = data.result.reviews.map(item => ({
+            nama_klien: item.author_name || 'Klien Google Maps',
+            waktu: item.relative_time_description || 'Ulasan Google Maps',
+            rating: item.rating || 5,
+            deskripsi: item.text || ''
+        }));
+
+        for (const review of reviews) {
+            try {
+                await TestimoniCRUDModels.createNewTestimoni(review);
+            } catch (e) {}
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: `Berhasil sinkronisasi ${reviews.length} ulasan terbaru dari Google Maps!`,
+            data: reviews
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: 'Terjadi kesalahan saat menghubungi Google Places API.',
+            error: error.message
+        });
     }
 };
 
@@ -93,5 +146,6 @@ module.exports = {
     getAllTestimoni,
     createNewTestimoni,
     updateTestimoni,
-    deleteTestimoni
+    deleteTestimoni,
+    syncGmapsReviews
 };
